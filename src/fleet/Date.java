@@ -5,5 +5,9 @@ package fleet;
  details if necessary.
  @author [insert name]
  */
-public class Date {
+public class Date implements Comparable<Date>{
+    private int year;
+    private int month;
+    private int day;
+    public boolean isValid()
 }
