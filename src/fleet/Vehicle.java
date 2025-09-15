@@ -1,5 +1,10 @@
 package fleet;
-
+/**
+ First, a single, very descriptive sentence describing the class.
+ Then, additional lines of description are added to elaborate on the
+ details if necessary.
+ @author Carly Chick, Alec Cotler
+ */
 public class Vehicle implements Comparable<Vehicle>{
     private String plate;   //license plate number
     private Date obtained;  // Date class
@@ -13,4 +18,8 @@ public class Vehicle implements Comparable<Vehicle>{
         this.mileage = mileage;
     }
 
+    @Override
+    public int compareTo(String test) {
+        return True;
+    }
 }
