@@ -1,4 +1,4 @@
-package fleets;
+package fleet;
 
 public class Frontend {
 }
