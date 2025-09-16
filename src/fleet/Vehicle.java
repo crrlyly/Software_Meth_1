@@ -3,7 +3,7 @@ package fleet;
  First, a single, very descriptive sentence describing the class.
  Then, additional lines of description are added to elaborate on the
  details if necessary.
- @author Carly Chick, Alec Cotler
+ @author Carly Chick
  */
 public class Vehicle implements Comparable<Vehicle>{
     private String plate;   //license plate number
@@ -28,11 +28,8 @@ public class Vehicle implements Comparable<Vehicle>{
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-
         if (obj == null || getClass() != obj.getClass()) return false;
-
         Vehicle other = (Vehicle) obj;
-
         return plate != null && plate.equals(other.plate);
     }
 
