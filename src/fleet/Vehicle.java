@@ -39,12 +39,11 @@ public class Vehicle implements Comparable<Vehicle>{
     }
 
     @Override
-    //still doing this
-    public int compareTo(Vehicle other){
-        if(this.plate.equals(other.plate)){
-            return 0;
+    public int compareTo(Vehicle other) {
+        if (other == null) {
+            throw new NullPointerException("Cannot compare to null Vehicle");
         }
-        return -1;
+        return this.plate.compareTo(other.plate);
     }
 
 }
