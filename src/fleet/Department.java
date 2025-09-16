@@ -3,7 +3,12 @@ package fleet;
  First, a single, very descriptive sentence describing the class.
  Then, additional lines of description are added to elaborate on the
  details if necessary.
- @author [insert name]
+ @author Carly Chick
  */
-public class Department {
+public enum Department {
+    ComputerScience,
+    ElectricalEngineering,
+    InformationTechnologyAndInformatics,
+    Math,
+    BusinessAnalyticsAndInformationTechnology
 }
