@@ -1,23 +1,11 @@
 package fleet;
-/**
- First, a single, very descriptive sentence describing the class.
- Then, additional lines of description are added to elaborate on the
- details if necessary.
- @author Carly Chick
- */
-public class Vehicle implements Comparable<Vehicle>{
-    private String plate;   //license plate number
-    private Date obtained;  // Date class
-    private Make make;  //Make is an enum class
-    private int mileage;    //current reading on the odometer
 
-    /**
-     *
-     * @param plate
-     * @param obtained
-     * @param make
-     * @param mileage
-     */
+public class Vehicle implements Comparable<Vehicle> {
+    private String plate;   // license plate number
+    private Date obtained;
+    private Make make;      // Make is an enum class
+    private int mileage;    // current reading on the odometer
+
     public Vehicle(String plate, Date obtained, Make make, int mileage) {
         this.plate = plate;
         this.obtained = obtained;
@@ -34,8 +22,8 @@ public class Vehicle implements Comparable<Vehicle>{
     }
 
     @Override
-    public String toString(){
-        return this.plate + ":" + this.make + ":" + this.obtained + " [mileage:" + this.mileage + "]";
+    public String toString() {
+        return this.plate + ":" + this.make + " [mileage:" + this.mileage + "]";
     }
 
     @Override
@@ -46,4 +34,28 @@ public class Vehicle implements Comparable<Vehicle>{
         return this.plate.compareTo(other.plate);
     }
 
+    // Testbed main
+    public static void main(String[] args) {
+        testTwoVehiclesEqual();
+    }
+
+    /**
+     * Testing out the equals method with two identical Vehicle objects
+     */
+    private static void testTwoVehiclesEqual() {
+        Vehicle one = new Vehicle("192837D", null, Make.CHEVY, 38);
+        Vehicle two = new Vehicle("192837D", null, Make.CHEVY, 38);
+
+        boolean expectedOutput = true;
+        boolean actualOutput = one.equals(two);
+        System.out.println("**Test case 1: Testing two same vehicles");
+        testResult(one, two, expectedOutput, actualOutput);
+    }
+
+    private static void testResult(Vehicle one, Vehicle two, boolean expectedOutput, boolean actualOutput) {
+        System.out.println("Test input: " + one + " and " + two);
+        System.out.println("Expected output: " + expectedOutput);
+        System.out.println("Actual output: " + actualOutput);
+        System.out.println(expectedOutput != actualOutput ? " (FAIL)\n" : " (PASS)\n");
+    }
 }
