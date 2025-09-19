@@ -1,8 +1,6 @@
 package fleet;
 /**
- First, a single, very descriptive sentence describing the class.
- Then, additional lines of description are added to elaborate on the
- details if necessary.
+ An enum class that enumerates through different vehicle makes
  @author Carly Chick
  */
 public enum Make {
