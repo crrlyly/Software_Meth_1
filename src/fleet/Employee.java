@@ -1,9 +1,7 @@
-package disabled;
-
+package fleet;
 /**
  * The Employee enum represents employees by their last names.
  * Each employee is also associated with a Department.
- *
  * This allows us to strongly type employee constants while
  * also tracking the department they belong to.
  *

@@ -1,6 +1,6 @@
 package fleet;
-import java.util.Objects;
 import java.util.Scanner;
+import java.util.Calendar;
 /**
  First, a single, very descriptive sentence describing the class.
  Then, additional lines of description are added to elaborate on the
@@ -12,6 +12,8 @@ public class Frontend {
     private static final String[] commands = {
             "L", "A", "D", "B", "C", "R", "PF", "PR", "PD", "PT"
     };
+    private final Fleet fleet = new Fleet();
+    private final Reservation reservation = new Reservation();
 
     public void run() {
         System.out.println("Vehicle Management System is running.");
@@ -25,7 +27,7 @@ public class Frontend {
                 String[] parts = line.split("\\s+");
                 String command = parts[0];
                 if (validCommand(command)){
-                    processCommand(command);
+                    processCommand(command, parts);
                 }
                 else{
                     System.out.println(command + " - invalid command!");
@@ -39,32 +41,20 @@ public class Frontend {
         System.out.println("Vehicle Management System is terminated.");
         running = false;
     }
-    private void processCommand(String cmd) {
-        //function to call commands based on parameters
-//        switch(cmd){
-//            case "L":
-//                break;
-//            case "A":
-//                break;
-//            case "D":
-//                break;
-//            case "B":
-//                break;
-//            case "C":
-//                break;
-//            case "R":
-//                break;
-//            case "PF":
-//                break;
-//            case "PR":
-//                break;
-//            case "PD":
-//                break;
-//            case "PT":
-//                break;
-//            default:
-//                System.out.println("Unknown command: " + command);
-//        }
+    private void processCommand(String cmd, String[] parts) {
+        switch(cmd){
+            case "L": break;
+            case "A": addToFleet(parts); break;
+            case "D": removeFromFleet(parts); break;
+            case "B": bookVehicle(parts); break;
+            case "C": cancelBooking(parts); break;
+            case "R": returnVehicle(parts); break;
+            case "PF": displayVehicles(); break;
+            case "PR": displayBookings1(); break;
+            case "PD": displayBookings2(); break;
+            case "PT": displayCompletedTrips(); break;
+            default: System.out.println("Unknown command: " + cmd);
+        }
     }
     private boolean validCommand(String inputCommand){
         for(int i = 0; i < commands.length; i++){
@@ -74,5 +64,97 @@ public class Frontend {
         }
         return false;
     }
+
+    private void addToFleet(String[] parts){
+        if(parts.length != 5){
+            System.out.println("Not a valid A command.");
+            return;
+        }
+        Date isValidDate = new Date(parts[2]);
+        if(!isValidDate.isValid()){
+            System.out.println("Not a valid date.");
+            return;
+        }
+        Make make = parseMake(parts[3]);
+        if(make == null){
+            System.out.println("Invalid make: " + parts[3]);
+            return;
+        }
+        int odo = Integer.parseInt(parts[4]);
+        if (!isValidOdometer(odo)) {
+            System.out.println("Invalid mileage");
+            return;
+        }
+        Vehicle vehicle = new Vehicle(parts[1], isValidDate, make, odo);
+        fleet.add(vehicle);
+    }
+    private Make parseMake(String makeStr) {
+        for (Make m : Make.values()) {
+            if (m.name().equalsIgnoreCase(makeStr)) {
+                return m;
+            }
+        }
+        return null; // not found
+    }
+    private boolean isValidOdometer(int odo) {
+        try {
+            return odo > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    } //not sure about this yet
+
+    //TODO
+    private void removeFromFleet(String[] parts){
+        if(parts.length != 2){
+            System.out.println("Not a valid A command.");
+            return;
+        }
+        if(!reservation.contains(new Booking(null,null,null,parts[1]))){
+            fleet.remove(parts[1]);
+        }
+        else{
+            return;
+        }
+    }
+
+    //TODO
+    private void bookVehicle(String[] parts){
+        if(parts.length != 5){
+            System.out.println("Not a valid A command.");
+            return;
+        }
+        //check if valid calendar date, today, or in the future
+        Date startingDate = new Date(parts[1]);
+        Date endingDate = new Date(parts[2]);
+
+        //if starting date is beyond 3 months from today, then stop
+
+
+    }
+    //TODO
+    private void checkValidBookingDates(Date startingDate, Date endingDate){
+
+        if(!startingDate.isValid() && startingDate.toString())
+
+    }
+
+    //TODO
+    private void cancelBooking(String[] parts){}
+
+    //TODO
+    private void returnVehicle(String[] parts){}
+
+    //TODO
+    private void displayVehicles(){}
+
+    //TODO
+    private void displayBookings1(){}
+
+    //TODO
+    private void displayBookings2(){}
+
+    //TODO
+    private void displayCompletedTrips(){}
 
 }

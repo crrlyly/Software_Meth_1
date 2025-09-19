@@ -1,4 +1,4 @@
-package disabled;
+package fleet;
 
 import fleet.Vehicle;
 
@@ -14,7 +14,7 @@ public class Fleet {
     private Vehicle[] fleet;
     private int size;
 
-    public Fleet(Vehicle[] fleet, int size) {
+    public Fleet() {
         this.fleet = new Vehicle[CAPACITY];
         this.size = 0;
     }
@@ -67,9 +67,9 @@ public class Fleet {
      *
      * @param vehicle
      */
-    public void remove(Vehicle vehicle) {
+    public void remove(String plate) {
         for(int i = 0; i < this.size; i++){
-            if(this.fleet[i] != null && this.fleet[i].equals(vehicle)){
+            if(this.fleet[i] != null && this.fleet[i].getPlate().equals(plate)){
                 this.fleet[i] = this.fleet[size-1];
                 this.fleet[size-1] = null;
                 this.size -= 1;

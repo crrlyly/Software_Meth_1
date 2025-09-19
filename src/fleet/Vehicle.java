@@ -13,6 +13,10 @@ public class Vehicle implements Comparable<Vehicle> {
         this.mileage = mileage;
     }
 
+    public String getPlate() {
+        return plate;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
