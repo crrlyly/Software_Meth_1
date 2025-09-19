@@ -1,5 +1,6 @@
 package fleet;
 
+
 /**
  * The Employee enum represents employees by their last names.
  * Each employee is also associated with a Department.
