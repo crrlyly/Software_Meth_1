@@ -6,4 +6,5 @@ package fleet;
  @author [insert name]
  */
 public class Booking {
+    //make sure to add another constructor that only holds the vehicle (nothing else) cuz i fear i need that
 }

@@ -19,6 +19,11 @@ public class Fleet {
         this.size = 0;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+
     /**
      *
      * @param vehicle
@@ -65,11 +70,11 @@ public class Fleet {
 
     /**
      *
-     * @param vehicle
+     * @param plate
      */
-    public void remove(String plate) {
+    public void remove(Vehicle vehicle) {
         for(int i = 0; i < this.size; i++){
-            if(this.fleet[i] != null && this.fleet[i].getPlate().equals(plate)){
+            if(this.fleet[i] != null && this.fleet[i].getPlate().equals(vehicle.getPlate())){
                 this.fleet[i] = this.fleet[size-1];
                 this.fleet[size-1] = null;
                 this.size -= 1;
@@ -91,13 +96,13 @@ public class Fleet {
         }
         return false;
     }
-    //TODO
+
     public void printByMake() {
         for (int i = 0; i < fleet.length - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < fleet.length; j++) {
                 if (fleet[j] != null && fleet[minIndex] != null) {
-                    if (fleet[j].compareTo(fleet[minIndex]) < 0) {
+                    if (compareMakeDate(fleet[j],fleet[minIndex]) < 0) {
                         minIndex = j;
                     }
                 }
@@ -110,6 +115,22 @@ public class Fleet {
             if (v != null) {
                 System.out.println(v);
             }
+        }
+    }
+
+    private int compareMakeDate(Vehicle a, Vehicle b){
+        if (a == null || b == null) throw new NullPointerException();
+        int byMake = Make.compareStringsIgnoreCase(a.getMake().name(), b.getMake().name());
+        if (byMake != 0) return byMake;
+        return a.getObtained().compareTo(b.getObtained());
+    }
+
+    //to be deleted testing methods
+    public void printFleet(){
+        System.out.println();
+        System.out.print("Fleet: ");
+        for(int i = 0; i < size; i++){
+            System.out.print(fleet[i].getPlate() + " ");
         }
     }
 }

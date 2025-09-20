@@ -1,4 +1,5 @@
 package fleet;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.Calendar;
 /**
@@ -24,6 +25,7 @@ public class Frontend {
             String line = sc.nextLine().trim();
             if (line.equals("Q")) {
                 terminate();
+                return;
             } else if (!line.isEmpty()) {
                 String[] parts = line.split("\\s+");
                 String command = parts[0];
@@ -37,6 +39,7 @@ public class Frontend {
         }
         sc.close();
     }
+
 
     private void terminate(){
         System.out.println("Vehicle Management System is terminated.");
@@ -66,6 +69,8 @@ public class Frontend {
         return false;
     }
 
+    //finished
+
     private void addToFleet(String[] parts){
         if(parts.length != 5){
             System.out.println("Not a valid A command.");
@@ -88,8 +93,8 @@ public class Frontend {
         }
         Vehicle vehicle = new Vehicle(parts[1], isValidDate, make, odo);
         fleet.add(vehicle);
+        System.out.println(vehicle.toString() + " has been added to the fleet.");
     }
-
     private boolean isValidOdometer(int odo) {
         try {
             return odo > 0;
@@ -98,18 +103,25 @@ public class Frontend {
         }
     } //not sure about this yet
 
-    //TODO
+    //theoretically done
     private void removeFromFleet(String[] parts){
         if(parts.length != 2){
             System.out.println("Not a valid A command.");
             return;
         }
-        if(!reservation.contains(new Booking(null,null,null,parts[1]))){
-            fleet.remove(parts[1]);
-        }
-        else{
+        Vehicle vehicle = new Vehicle(parts[1]);
+        if(!fleet.contains(vehicle)){
+            System.out.println(vehicle.getPlate() + " is not in the fleet.");
             return;
         }
+        //if reservation (list of bookings) has the vehicle (same plate) then dont delete)
+        Booking booking = new Booking(vehicle);
+        if(reservation.contains(booking)){  //this method will have to go into vehicle class and check the plates
+            System.out.println(vehicle.getPlate() + " - has existing bookings; cannot be removed.");
+            return;
+        }
+        fleet.remove(vehicle);
+        System.out.println(vehicle.toString() + " has been removed from the fleet.");
     }
 
     //TODO
@@ -129,7 +141,7 @@ public class Frontend {
     //TODO
     private void checkValidBookingDates(Date startingDate, Date endingDate){
 
-        if(!startingDate.isValid() && startingDate.toString())
+//        if(!startingDate.isValid() && startingDate.toString())
 
     }
 
@@ -139,22 +151,23 @@ public class Frontend {
     //TODO
     private void returnVehicle(String[] parts){}
 
-
-
+    //finished
     private void displayVehicles(){
+        System.out.println("*List of vehicles in the fleet, ordered by make and date obtained.");
         fleet.printByMake();
+        System.out.println("*end of list.");
     }
 
     private void displayBookings1(){
-        reservation.printByVehicle();
+//        reservation.printByVehicle();
     }
 
     private void displayBookings2(){
-        reservation.printByDept();
+//        reservation.printByDept();
     }
 
     private void displayCompletedTrips(){
-        trip.print();
+//        trip.print();
     }
 
 }
