@@ -5,7 +5,7 @@ package fleet;
  details if necessary..
  @author Alec Cotler
  */
-public class Booking implements Comparable<Booking> {
+public class Booking {
     private Date begin;
     private Date end;
     private Employee employee;
