@@ -1,10 +1,13 @@
 package fleet;
-
+/**
+ *
+ * @author Carly Chick
+ */
 public class Vehicle implements Comparable<Vehicle> {
-    private String plate;   // license plate number
+    private String plate;
     private Date obtained;
-    private Make make;      // Make is an enum class
-    private int mileage;    // current reading on the odometer
+    private Make make;
+    private int mileage;
 
     public Vehicle(String plate, Date obtained, Make make, int mileage) {
         this.plate = plate;
@@ -13,12 +16,16 @@ public class Vehicle implements Comparable<Vehicle> {
         this.mileage = mileage;
     }
 
+    public Vehicle(String plate) {
+        this.plate = plate;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Vehicle other = (Vehicle) obj;
-        return plate != null && plate.equals(other.plate);
+        return this.plate != null && this.plate.equals(other.plate);
     }
 
     @Override
@@ -28,17 +35,32 @@ public class Vehicle implements Comparable<Vehicle> {
 
     @Override
     public int compareTo(Vehicle other) {
-        if (other == null) {
-            throw new NullPointerException("Cannot compare to null Vehicle");
-        }
-        return this.plate.compareTo(other.plate);
+        if (other == null) throw new NullPointerException();
+        int byMake = Make.compareStringsIgnoreCase(this.make.name(), other.make.name());
+        if (byMake != 0) return byMake;
+        return this.obtained.compareTo(other.obtained);
+    }
+
+    public String getPlate() {
+        return plate;
+    }
+
+    public Date getObtained() {
+        return obtained;
+    }
+
+    public Make getMake() {
+        return make;
+    }
+
+    public int getMileage() {
+        return mileage;
     }
 
     // Testbed main
     public static void main(String[] args) {
         testTwoVehiclesEqual();
     }
-
     /**
      * Testing out the equals method with two identical Vehicle objects
      */
