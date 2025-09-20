@@ -25,6 +25,10 @@ public class Booking {
         this.vehicle = vehicle;
     }
 
+    public Booking(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }
