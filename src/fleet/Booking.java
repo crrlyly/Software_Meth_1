@@ -25,7 +25,9 @@ public class Booking {
         this.vehicle = vehicle;
     }
 
-
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
 
     @Override
     public boolean equals(Object obj) {
