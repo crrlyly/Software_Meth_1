@@ -14,6 +14,7 @@ public class Frontend {
     };
     private final Fleet fleet = new Fleet();
     private final Reservation reservation = new Reservation();
+    private final TripList trip = new TripList();
 
     public void run() {
         System.out.println("Vehicle Management System is running.");
@@ -75,7 +76,7 @@ public class Frontend {
             System.out.println("Not a valid date.");
             return;
         }
-        Make make = parseMake(parts[3]);
+        Make make = Make.parseMake(parts[3]);
         if(make == null){
             System.out.println("Invalid make: " + parts[3]);
             return;
@@ -88,14 +89,7 @@ public class Frontend {
         Vehicle vehicle = new Vehicle(parts[1], isValidDate, make, odo);
         fleet.add(vehicle);
     }
-    private Make parseMake(String makeStr) {
-        for (Make m : Make.values()) {
-            if (m.name().equalsIgnoreCase(makeStr)) {
-                return m;
-            }
-        }
-        return null; // not found
-    }
+
     private boolean isValidOdometer(int odo) {
         try {
             return odo > 0;
@@ -145,16 +139,22 @@ public class Frontend {
     //TODO
     private void returnVehicle(String[] parts){}
 
-    //TODO
-    private void displayVehicles(){}
 
-    //TODO
-    private void displayBookings1(){}
 
-    //TODO
-    private void displayBookings2(){}
+    private void displayVehicles(){
+        fleet.printByMake();
+    }
 
-    //TODO
-    private void displayCompletedTrips(){}
+    private void displayBookings1(){
+        reservation.printByVehicle();
+    }
+
+    private void displayBookings2(){
+        reservation.printByDept();
+    }
+
+    private void displayCompletedTrips(){
+        trip.print();
+    }
 
 }

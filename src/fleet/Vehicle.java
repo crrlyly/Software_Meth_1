@@ -22,7 +22,7 @@ public class Vehicle implements Comparable<Vehicle> {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Vehicle other = (Vehicle) obj;
-        return plate != null && plate.equals(other.plate);
+        return this.plate != null && this.plate.equals(other.plate);
     }
 
     @Override
@@ -32,11 +32,12 @@ public class Vehicle implements Comparable<Vehicle> {
 
     @Override
     public int compareTo(Vehicle other) {
-        if (other == null) {
-            throw new NullPointerException("Cannot compare to null Vehicle");
-        }
-        return this.plate.compareTo(other.plate);
+        if (other == null) throw new NullPointerException();
+        int byMake = this.make.compareToIgnoreCase(other.make);
+        if (byMake != 0) return byMake;
+        return this.dateObtained.compareTo(other.dateObtained);
     }
+
 
     // Testbed main
     public static void main(String[] args) {

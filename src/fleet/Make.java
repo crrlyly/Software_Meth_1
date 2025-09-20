@@ -8,4 +8,13 @@ public enum Make {
     CHEVY,
     TOYOTA,
     HONDA;
+
+    public static Make parseMake(String makeStr) {
+        for (Make m : Make.values()) {
+            if (m.name().equalsIgnoreCase(makeStr)) {
+                return m;
+            }
+        }
+        return null; // not found
+    }
 }

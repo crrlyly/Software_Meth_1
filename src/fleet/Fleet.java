@@ -93,9 +93,23 @@ public class Fleet {
     }
     //TODO
     public void printByMake() {
-        //order by make and then date obtained
-        //will use selection sort
-
-
+        for (int i = 0; i < fleet.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < fleet.length; j++) {
+                if (fleet[j] != null && fleet[minIndex] != null) {
+                    if (fleet[j].compareTo(fleet[minIndex]) < 0) {
+                        minIndex = j;
+                    }
+                }
+            }
+            Vehicle temp = fleet[i];
+            fleet[i] = fleet[minIndex];
+            fleet[minIndex] = temp;
+        }
+        for (Vehicle v : fleet) {
+            if (v != null) {
+                System.out.println(v);
+            }
+        }
     }
 }
