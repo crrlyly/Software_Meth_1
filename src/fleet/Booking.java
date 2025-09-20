@@ -1,8 +1,7 @@
 package fleet;
 /**
- First, a single, very descriptive sentence describing the class.
- Then, additional lines of description are added to elaborate on the
- details if necessary..
+ This class implements bookings for the fleet including an equals and toString method.
+
  @author Alec Cotler
  */
 public class Booking {
