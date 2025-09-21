@@ -29,6 +29,18 @@ public class Booking {
         this.vehicle = vehicle;
     }
 
+    public Date getBegin() {
+        return begin;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }
