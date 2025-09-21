@@ -55,7 +55,7 @@ public class Booking {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Booking other = (Booking) obj;
-        return begin == other.begin && end == other.end && employee == other.employee && vehicle == other.vehicle;
+        return begin == other.begin && end == other.end && vehicle.equals(other.vehicle);
     }
 
     @Override
