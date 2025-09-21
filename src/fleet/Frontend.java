@@ -29,12 +29,8 @@ public class Frontend {
             } else if (!line.isEmpty()) {
                 String[] parts = line.split("\\s+");
                 String command = parts[0];
-                if (validCommand(command)){
-                    processCommand(command, parts);
-                }
-                else{
-                    System.out.println(command + " - invalid command!");
-                }
+                processCommand(command, parts);
+
             }
         }
         sc.close();
@@ -57,7 +53,7 @@ public class Frontend {
             case "PR": displayBookings1(); break;
             case "PD": displayBookings2(); break;
             case "PT": displayCompletedTrips(); break;
-            default: System.out.println("Unknown command: " + cmd);
+            default: System.out.println(cmd + " - invalid command!");
         }
     }
     private boolean validCommand(String inputCommand){
@@ -70,30 +66,39 @@ public class Frontend {
     }
 
     //finished
-
     private void addToFleet(String[] parts){
         if(parts.length != 5){
             System.out.println("Not a valid A command.");
             return;
         }
         Date isValidDate = new Date(parts[2]);
+        Date today = getToday();
         if(!isValidDate.isValid()){
-            System.out.println("Not a valid date.");
+            System.out.println(parts[2] + " - invalid calendar date.");
+            return;
+        }
+        else if(isValidDate.compareTo(today) >= 0){
+            System.out.println(parts[2] + " - is today or a future date.");
             return;
         }
         Make make = Make.parseMake(parts[3]);
         if(make == null){
-            System.out.println("Invalid make: " + parts[3]);
+            System.out.println(parts[3] + " - invalid make.");
             return;
         }
         int odo = Integer.parseInt(parts[4]);
         if (!isValidOdometer(odo)) {
-            System.out.println("Invalid mileage");
+            System.out.println(parts[4] + " - invalid mileage.");
             return;
         }
         Vehicle vehicle = new Vehicle(parts[1], isValidDate, make, odo);
         fleet.add(vehicle);
         System.out.println(vehicle.toString() + " has been added to the fleet.");
+    }
+    private Date getToday(){
+        Calendar calendar = Calendar.getInstance();
+        String todayString = (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH) + "/" + calendar.get(Calendar.YEAR);
+        return new Date(todayString);
     }
     private boolean isValidOdometer(int odo) {
         try {
@@ -103,7 +108,7 @@ public class Frontend {
         }
     } //not sure about this yet
 
-    //theoretically done
+    //finished
     private void removeFromFleet(String[] parts){
         if(parts.length != 2){
             System.out.println("Not a valid A command.");
@@ -114,14 +119,14 @@ public class Frontend {
             System.out.println(vehicle.getPlate() + " is not in the fleet.");
             return;
         }
-        //if reservation (list of bookings) has the vehicle (same plate) then dont delete)
         Booking booking = new Booking(vehicle);
-        if(reservation.contains(booking)){  //this method will have to go into vehicle class and check the plates
+        if(reservation.contains(booking)){
             System.out.println(vehicle.getPlate() + " - has existing bookings; cannot be removed.");
             return;
         }
+        Vehicle getOriginalVehicle = fleet.getVehicle(vehicle);
+        System.out.println(getOriginalVehicle.toString() + " has been removed from the fleet.");
         fleet.remove(vehicle);
-        System.out.println(vehicle.toString() + " has been removed from the fleet.");
     }
 
     //TODO
@@ -144,7 +149,6 @@ public class Frontend {
 //        if(!startingDate.isValid() && startingDate.toString())
 
     }
-
     //TODO
     private void cancelBooking(String[] parts){}
 
@@ -153,21 +157,34 @@ public class Frontend {
 
     //finished
     private void displayVehicles(){
+        if(this.fleet.getSize() == 0){
+            System.out.println("There is no vehicle in the fleet.");
+            return;
+        }
         System.out.println("*List of vehicles in the fleet, ordered by make and date obtained.");
         fleet.printByMake();
         System.out.println("*end of list.");
     }
 
     private void displayBookings1(){
-//        reservation.printByVehicle();
+        if(this.reservation.getSize() == 0){
+            System.out.println("There is no booking record.");
+            return;
+        }
+//      reservation.printByVehicle();
     }
 
     private void displayBookings2(){
-//        reservation.printByDept();
+        if(this.reservation.getSize() == 0){
+            System.out.println("There is no booking record.");
+            return;
+        }
+//      reservation.printByDept();
     }
 
     private void displayCompletedTrips(){
-//        trip.print();
+
+//      trip.print();
     }
 
 }
