@@ -127,4 +127,16 @@ public class Date implements Comparable<Date> {
         }
         return Integer.compare(this.day, other.day);
     }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
 }
