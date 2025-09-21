@@ -21,6 +21,10 @@ package fleet;
         return size;
     }
 
+    public Booking[] getBookings() {
+        return bookings;
+    }
+
     //search for the given booking and return index, -1 if the booking is not in the reservation.
     private int find(Booking booking) {
         if (booking == null) {
@@ -133,7 +137,7 @@ package fleet;
         }
     }
 
-    public Booking getBooking(Booking booking) {
+    public Booking bookingLookup(Booking booking) {
         if(booking == null){
             return null;
         }
@@ -142,6 +146,18 @@ package fleet;
             return null;
         }
         return bookings[index];
+    }
+
+    public boolean findInstanceOfVehicle(Booking booking){
+        if (booking == null) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (bookings[i].equalsNoBeginDate(booking)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
