@@ -43,7 +43,7 @@ public class Fleet {
      */
     private void grow() {
         Vehicle[] newArray = new Vehicle[this.fleet.length + CAPACITY];
-        for(int i = 0; i < this.size; i++){
+        for(int i = 0; i < size; i++){
             newArray[i] = this.fleet[i];
         }
         this.fleet = newArray;
@@ -76,9 +76,7 @@ public class Fleet {
             this.fleet[index] = this.fleet[size-1];
             this.fleet[size-1] = null;
             this.size -= 1;
-            return;
         }
-
     }
 
     /**

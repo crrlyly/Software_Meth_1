@@ -10,5 +10,14 @@ public enum Department {
     ElectricalEngineering,
     InformationTechnologyAndInformatics,
     Math,
-    BusinessAnalyticsAndInformationTechnology
+    BusinessAnalyticsAndInformationTechnology;
+
+    public static Department parseEmployee(String departmentStr) {
+        for (Department d : Department.values()) {
+            if (d.name().equalsIgnoreCase(departmentStr)) {
+                return d;
+            }
+        }
+        return null;
+    }
 }

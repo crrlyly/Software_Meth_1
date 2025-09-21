@@ -26,4 +26,13 @@ public enum Employee {
     public Department getDept() {
         return dept;
     }
+
+    public static Employee parseEmployee(String employeeStr) {
+        for (Employee e : Employee.values()) {
+            if (e.name().equalsIgnoreCase(employeeStr)) {
+                return e;
+            }
+        }
+        return null;
+    }
 }
