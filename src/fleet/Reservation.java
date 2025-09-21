@@ -132,6 +132,17 @@ package fleet;
             bookings[index + 1] = key;
         }
     }
+
+    public Booking getBooking(Booking booking) {
+        if(booking == null){
+            return null;
+        }
+        int index = find(booking);
+        if(index == -1){
+            return null;
+        }
+        return bookings[index];
+    }
 }
 
 
