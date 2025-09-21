@@ -10,6 +10,15 @@ public class Booking {
     private Employee employee;
     private Vehicle vehicle;
 
+    public Booking(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Booking(Date begin, Date end, Vehicle vehicle){
+        this.begin = begin;
+        this.end = end;
+        this.vehicle = vehicle;
+    }
 
     /**
      *
@@ -22,16 +31,6 @@ public class Booking {
         this.begin = begin;
         this.end = end;
         this.employee = employee;
-        this.vehicle = vehicle;
-    }
-
-    public Booking(Date begin, Date end, Vehicle vehicle){
-        this.begin = begin;
-        this.end = end;
-        this.vehicle = vehicle;
-    }
-
-    public Booking(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 
