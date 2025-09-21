@@ -25,6 +25,12 @@ public class Booking {
         this.vehicle = vehicle;
     }
 
+    public Booking(Date begin, Date end, Vehicle vehicle){
+        this.begin = begin;
+        this.end = end;
+        this.vehicle = vehicle;
+    }
+
     public Booking(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
