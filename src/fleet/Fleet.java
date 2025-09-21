@@ -22,8 +22,6 @@ public class Fleet {
     public int getSize() {
         return size;
     }
-
-
     /**
      *
      * @param vehicle
@@ -70,17 +68,17 @@ public class Fleet {
 
     /**
      *
-     * @param plate
+     * @param vehicle
      */
     public void remove(Vehicle vehicle) {
-        for(int i = 0; i < this.size; i++){
-            if(this.fleet[i] != null && this.fleet[i].getPlate().equals(vehicle.getPlate())){
-                this.fleet[i] = this.fleet[size-1];
-                this.fleet[size-1] = null;
-                this.size -= 1;
-                return;
-            }
+        int index = find(vehicle);
+        if(index != -1){
+            this.fleet[index] = this.fleet[size-1];
+            this.fleet[size-1] = null;
+            this.size -= 1;
+            return;
         }
+
     }
 
     /**
@@ -125,12 +123,15 @@ public class Fleet {
         return a.getObtained().compareTo(b.getObtained());
     }
 
-    //to be deleted testing methods
-    public void printFleet(){
-        System.out.println();
-        System.out.print("Fleet: ");
-        for(int i = 0; i < size; i++){
-            System.out.print(fleet[i].getPlate() + " ");
+    public Vehicle getVehicle(Vehicle vehicle) {
+        if(vehicle == null){
+            return null;
         }
+        int index = find(vehicle);
+        if(index == -1){
+            return null;
+        }
+        return fleet[index];
     }
+
 }
