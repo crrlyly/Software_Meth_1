@@ -17,7 +17,9 @@ package fleet;
         this.bookings = new Booking[initialArraySize];
     }
 
-
+    public int getSize() {
+        return size;
+    }
 
     //search for the given booking and return index, -1 if the booking is not in the reservation.
         private int find(Booking booking) {
