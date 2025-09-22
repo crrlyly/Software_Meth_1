@@ -13,11 +13,13 @@ public enum Department {
     BusinessAnalyticsAndInformationTechnology;
 
     public static Department parseEmployee(String departmentStr) {
-        for (Department d : Department.values()) {
-            if (d.name().equalsIgnoreCase(departmentStr)) {
-                return d;
+        Department[] allDepartments = Department.values(); // get all enum constants
+        for (int i = 0; i < allDepartments.length; i++) {
+            if (allDepartments[i].name().equalsIgnoreCase(departmentStr)) {
+                return allDepartments[i];
             }
         }
-        return null;
+        return null; // not found
     }
+
 }

@@ -9,15 +9,15 @@ public class Vehicle implements Comparable<Vehicle> {
     private Make make;
     private int mileage;
 
+    public Vehicle(String plate) {
+        this.plate = plate;
+    }
+
     public Vehicle(String plate, Date obtained, Make make, int mileage) {
         this.plate = plate;
         this.obtained = obtained;
         this.make = make;
         this.mileage = mileage;
-    }
-
-    public Vehicle(String plate) {
-        this.plate = plate;
     }
 
     @Override
@@ -35,10 +35,8 @@ public class Vehicle implements Comparable<Vehicle> {
 
     @Override
     public int compareTo(Vehicle other) {
-        if (other == null) throw new NullPointerException();
-        int byMake = Make.compareStringsIgnoreCase(this.make.name(), other.make.name());
-        if (byMake != 0) return byMake;
-        return this.obtained.compareTo(other.obtained);
+        //TODO
+        return 0;
     }
 
     public String getPlate() {
@@ -55,6 +53,10 @@ public class Vehicle implements Comparable<Vehicle> {
 
     public int getMileage() {
         return mileage;
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
     }
 
     // Testbed main

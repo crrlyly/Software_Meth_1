@@ -6,4 +6,5 @@ package fleet;
  @author [insert name]
  */
 public class Trip {
+
 }

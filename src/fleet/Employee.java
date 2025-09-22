@@ -28,11 +28,12 @@ public enum Employee {
     }
 
     public static Employee parseEmployee(String employeeStr) {
-        for (Employee e : Employee.values()) {
-            if (e.name().equalsIgnoreCase(employeeStr)) {
-                return e;
+        Employee[] allEmployees = Employee.values();   // get all enum constants
+        for (int i = 0; i < allEmployees.length; i++) {
+            if (allEmployees[i].name().equalsIgnoreCase(employeeStr)) {
+                return allEmployees[i];
             }
         }
-        return null;
+        return null; // not found
     }
 }
