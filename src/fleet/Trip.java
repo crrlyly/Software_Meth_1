@@ -3,13 +3,19 @@ package fleet;
  First, a single, very descriptive sentence describing the class.
  Then, additional lines of description are added to elaborate on the
  details if necessary.
- @author [insert name]
+ @author Carly Chick
  */
 public class Trip {
     private Booking booking;
     private int beginMileage;
     private int endMileage;
 
+    /**
+     *
+     * @param booking
+     * @param beginMileage
+     * @param endMileage
+     */
     public Trip(Booking booking, int beginMileage, int endMileage) {
         this.booking = booking;
         this.beginMileage = beginMileage;
