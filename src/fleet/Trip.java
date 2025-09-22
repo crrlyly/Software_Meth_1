@@ -10,6 +10,18 @@ public class Trip {
     private int beginMileage;
     private int endMileage;
 
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public int getBeginMileage() {
+        return beginMileage;
+    }
+
+    public int getEndMileage() {
+        return endMileage;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
