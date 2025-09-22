@@ -10,6 +10,12 @@ public class Trip {
     private int beginMileage;
     private int endMileage;
 
+    public Trip(Booking booking, int beginMileage, int endMileage) {
+        this.booking = booking;
+        this.beginMileage = beginMileage;
+        this.endMileage = endMileage;
+    }
+
     public Booking getBooking() {
         return booking;
     }
