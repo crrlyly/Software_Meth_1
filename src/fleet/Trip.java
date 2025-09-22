@@ -14,8 +14,8 @@ public class Trip {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Booking other = (Booking) obj;
-        return this.booking.equals(other);
+        Trip other = (Trip) obj;
+        return this.booking.equals(other.booking);
     }
 
     @Override
