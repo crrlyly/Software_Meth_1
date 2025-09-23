@@ -8,14 +8,11 @@ import java.util.StringTokenizer;
  * @author Alec Cotler
  */
 public class Date implements Comparable<Date> {
-    private int year;
-    private int month;
-    private int day;
+
 
     public static final int Quadrennial = 4;
     public static final int Centennial = 100;
     public static final int Quatercentennial = 400;
-
     public static final int monthsInYear = 12;
     public static final int minimumMonth = 1;
     public static final int minimumDay = 1;
@@ -33,7 +30,9 @@ public class Date implements Comparable<Date> {
     public static final int daysInNovember = 30;
     public static final int daysInDecember = 31;
 
-
+    private int year;
+    private int month;
+    private int day;
     // Constructor: parses a date string in "mm/dd/yyyy" format
     /**
      *
