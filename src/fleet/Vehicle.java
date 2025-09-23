@@ -45,7 +45,7 @@ public class Vehicle implements Comparable<Vehicle> {
 
     @Override
     public String toString() {
-        return this.plate + ":" + this.make + " [mileage:" + this.mileage + "]";
+        return this.plate + ":" + this.make + ":" + this.obtained + " [mileage:" + this.mileage + "]";
     }
 
     //TODO

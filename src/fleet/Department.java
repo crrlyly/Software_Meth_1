@@ -31,4 +31,21 @@ public enum Department {
         return null; // not found
     }
 
+    public String convertToWords(){
+        switch(this.name()){
+            case "ComputerScience":
+                return "Computer Science";
+            case "ElectricalEngineering":
+                return "Electrical Engineering";
+            case "InformationTechnologyAndInformatics":
+                return "Information Technology and Informatics";
+            case "Math":
+                return "Mathematics";
+            case "BusinessAnalyticsAndInformationTechnology":
+                return "Business Analytics and Information Technology";
+            default:
+                return "Failed to find department.";
+        }
+    }
+
 }

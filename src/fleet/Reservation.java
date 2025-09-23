@@ -93,7 +93,13 @@ package fleet;
 
     public void printByDept() {
         sortByDeptThenEmployee();
+        Department dept = bookings[0].getEmployee().getDept();
+        System.out.println("--" + dept.convertToWords() + "--");
         for (int i = 0; i < size; i++) {
+            if(!dept.name().equals(bookings[i].getEmployee().getDept().name())){
+                dept = bookings[i].getEmployee().getDept();
+                System.out.println("--" + dept.convertToWords() + "--");
+            }
             System.out.println(bookings[i]);
         }
     } //ordered by department then by employee
@@ -124,10 +130,10 @@ package fleet;
             int index = i - 1;
             while (index >= 0 && (
                     // compare department alphabetically
-                    bookings[index].getEmployee().getDept().compareTo(key.getEmployee().getDept()) > 0 ||
+                    bookings[index].getEmployee().getDept().name().compareTo(key.getEmployee().getDept().name()) > 0 ||
 
                             // if departments are equal, compare employees alphabetically by name
-                            (bookings[index].getEmployee().getDept().equals(key.getEmployee().getDept()) &&
+                            (bookings[index].getEmployee().getDept().name().equals(key.getEmployee().getDept().name()) &&
                                     bookings[index].getEmployee().name().compareTo(key.getEmployee().name()) > 0)
             )) {
                 bookings[index + 1] = bookings[index];

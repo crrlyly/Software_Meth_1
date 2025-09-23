@@ -7,14 +7,14 @@ package fleet;
  * @author Carly Chick
  */
 public enum Employee {
-    Patel(Department.ComputerScience),
-    Lim(Department.ElectricalEngineering),
-    Zimnes(Department.ComputerScience),
-    Harper(Department.ElectricalEngineering),
-    Kaur(Department.InformationTechnologyAndInformatics),
-    Taylor(Department.Math),
-    Ramesh(Department.Math),
-    Ceravolo(Department.BusinessAnalyticsAndInformationTechnology);
+    PATEL(Department.ComputerScience),
+    LIM(Department.ElectricalEngineering),
+    ZIMNES(Department.ComputerScience),
+    HARPER(Department.ElectricalEngineering),
+    KAUR(Department.InformationTechnologyAndInformatics),
+    TAYLOR(Department.Math),
+    RAMESH(Department.Math),
+    CERAVOLO(Department.BusinessAnalyticsAndInformationTechnology);
 
     private Department dept;
 
@@ -45,6 +45,6 @@ public enum Employee {
                 return allEmployees[i];
             }
         }
-        return null; // not found
+        return null;
     }
 }
