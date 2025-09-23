@@ -1,5 +1,7 @@
 package fleet;
 /**
+ * Represents a vehicle with details such as license plate, acquisition date, make, and mileage,
+ * and provides methods for comparison, equality checks, and string representation.
  *
  * @author Carly Chick
  */
@@ -9,15 +11,28 @@ public class Vehicle implements Comparable<Vehicle> {
     private Make make;
     private int mileage;
 
+    /**
+     * Constructs a Vehicle with the specified license plate.
+     *
+     * @param plate the license plate identifier for the vehicle
+     */
+    public Vehicle(String plate) {
+        this.plate = plate;
+    }
+
+    /**
+     * Constructs a Vehicle with the specified license plate, acquisition date, make, and mileage.
+     *
+     * @param plate the license plate identifier for the vehicle
+     * @param obtained the date the vehicle was acquired
+     * @param make the manufacturer or brand of the vehicle
+     * @param mileage the mileage (in miles) recorded for the vehicle
+     */
     public Vehicle(String plate, Date obtained, Make make, int mileage) {
         this.plate = plate;
         this.obtained = obtained;
         this.make = make;
         this.mileage = mileage;
-    }
-
-    public Vehicle(String plate) {
-        this.plate = plate;
     }
 
     @Override
@@ -30,15 +45,27 @@ public class Vehicle implements Comparable<Vehicle> {
 
     @Override
     public String toString() {
-        return this.plate + ":" + this.make + " [mileage:" + this.mileage + "]";
+        return this.plate + ":" + this.make + ":" + this.obtained + " [mileage:" + this.mileage + "]";
     }
 
+    //TODO
     @Override
     public int compareTo(Vehicle other) {
-        if (other == null) throw new NullPointerException();
-        int byMake = Make.compareStringsIgnoreCase(this.make.name(), other.make.name());
-        if (byMake != 0) return byMake;
-        return this.obtained.compareTo(other.obtained);
+        if (other == null) {
+            throw new NullPointerException("Cannot compare to null Vehicle");
+        }
+
+        int byMake = Make.compareStringsIgnoreCase(this.getMake().name(), other.getMake().name());
+        if (byMake != 0) {
+            return byMake < 0 ? -1 : 1;
+        }
+
+        int byDate = this.getObtained().compareTo(other.getObtained());
+        if (byDate != 0) {
+            return byDate < 0 ? -1 : 1;
+        }
+
+        return 0; // both make and obtained date are equal
     }
 
     public String getPlate() {
@@ -55,6 +82,10 @@ public class Vehicle implements Comparable<Vehicle> {
 
     public int getMileage() {
         return mileage;
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
     }
 
     // Testbed main

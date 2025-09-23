@@ -21,6 +21,10 @@ package fleet;
         return size;
     }
 
+    public Booking[] getBookings() {
+        return bookings;
+    }
+
     //search for the given booking and return index, -1 if the booking is not in the reservation.
     private int find(Booking booking) {
         if (booking == null) {
@@ -36,7 +40,6 @@ package fleet;
 
     //resize the array (add 4 spots)
     private void grow() {
-
         Booking[] newBookings = new Booking[this.bookings.length + growSize];
         for (int i = 0; i < this.bookings.length; i++) {
             newBookings[i] = this.bookings[i]; // copy over each element
@@ -89,7 +92,13 @@ package fleet;
 
     public void printByDept() {
         sortByDeptThenEmployee();
+        Department dept = bookings[0].getEmployee().getDept();
+        System.out.println("--" + dept.convertToWords() + "--");
         for (int i = 0; i < size; i++) {
+            if(!dept.name().equals(bookings[i].getEmployee().getDept().name())){
+                dept = bookings[i].getEmployee().getDept();
+                System.out.println("--" + dept.convertToWords() + "--");
+            }
             System.out.println(bookings[i]);
         }
     } //ordered by department then by employee
@@ -120,10 +129,10 @@ package fleet;
             int index = i - 1;
             while (index >= 0 && (
                     // compare department alphabetically
-                    bookings[index].getEmployee().getDept().compareTo(key.getEmployee().getDept()) > 0 ||
+                    bookings[index].getEmployee().getDept().name().compareTo(key.getEmployee().getDept().name()) > 0 ||
 
                             // if departments are equal, compare employees alphabetically by name
-                            (bookings[index].getEmployee().getDept().equals(key.getEmployee().getDept()) &&
+                            (bookings[index].getEmployee().getDept().name().equals(key.getEmployee().getDept().name()) &&
                                     bookings[index].getEmployee().name().compareTo(key.getEmployee().name()) > 0)
             )) {
                 bookings[index + 1] = bookings[index];
@@ -131,6 +140,41 @@ package fleet;
             }
             bookings[index + 1] = key;
         }
+    }
+
+    public Booking bookingLookup(Booking booking) {
+        if(booking == null){
+            return null;
+        }
+        int index = find(booking);
+        if(index == -1){
+            return null;
+        }
+        return bookings[index];
+    }
+
+    public boolean findInstanceOfVehicle(Booking booking){
+        if (booking == null) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (bookings[i].equalsNoBeginDate(booking)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean findInstanceOfVehicleOnlyPlate(Booking booking){
+        if (booking == null) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (bookings[i].equalsNoDate(booking)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
