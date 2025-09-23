@@ -8,13 +8,13 @@ package fleet;
     public class Reservation {
     private Booking[] bookings;
     private int size;
-    public static final int initialArraySize = 4;
+    public static final int initialArrayLength = 4;
     public static int NOT_FOUND = -1;
     public static int growSize = 4;
 
     public Reservation() {
         this.size = 0;
-        this.bookings = new Booking[initialArraySize];
+        this.bookings = new Booking[initialArrayLength];
     }
 
     public int getSize() {

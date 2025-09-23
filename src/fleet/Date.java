@@ -61,10 +61,14 @@ public class Date implements Comparable<Date> {
         if (day < minimumDay) {
             return false;
         }
+        int daysInFebruary = daysInFebruaryNonLeap;
+        if (isLeap()){
+            daysInFebruary = daysInFebruaryLeap;
+        }
         int maxDays;
         switch (month) {
             case 1:  maxDays = daysInJanuary; break;
-            case 2:  maxDays = isLeap() ? daysInFebruaryLeap : daysInFebruaryNonLeap; break;
+            case 2:  maxDays = daysInFebruary; break;
             case 3:  maxDays = daysInMarch; break;
             case 4:  maxDays = daysInApril; break;
             case 5:  maxDays = daysInMay; break;
