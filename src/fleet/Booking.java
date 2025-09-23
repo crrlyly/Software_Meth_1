@@ -72,6 +72,10 @@ public class Booking {
         return this.end == booking.end && this.vehicle.equals(booking.vehicle);
     }
 
+    public boolean equalsNoDate(Booking booking){
+        return this.vehicle.equals(booking.vehicle);
+    }
+
 
     //make sure to add another constructor that only holds the vehicle (nothing else) cuz i fear i need that
 }

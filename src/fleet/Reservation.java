@@ -159,6 +159,18 @@ package fleet;
         }
         return false;
     }
+
+    public boolean findInstanceOfVehicleOnlyPlate(Booking booking){
+        if (booking == null) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (bookings[i].equalsNoDate(booking)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 
