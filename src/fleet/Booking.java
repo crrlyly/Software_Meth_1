@@ -15,6 +15,7 @@ public class Booking {
     }
 
     public Booking(Date end, Vehicle vehicle){
+        this.begin = end;
         this.end = end;
         this.vehicle = vehicle;
     }
@@ -60,16 +61,17 @@ public class Booking {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Booking other = (Booking) obj;
-        return begin == other.begin && end == other.end && vehicle.equals(other.vehicle);
+        return begin.equals(other.begin) && end.equals(other.end) && vehicle.equals(other.vehicle);
     }
 
     @Override
     public String toString() {
-        return this.vehicle.toString() + " [beginning " + this.begin.toString() + " ending " + this.end.toString() +":" + this.employee + "]";
+        return this.vehicle.toString() + " [beginning " + this.begin.toString() + " ending "
+                + this.end.toString() +":" + this.employee + "]";
     }
 
     public boolean equalsNoBeginDate(Booking booking){
-        return this.end == booking.end && this.vehicle.equals(booking.vehicle);
+        return this.end.equals(booking.end) && this.vehicle.equals(booking.vehicle);
     }
 
     public boolean equalsNoDate(Booking booking){

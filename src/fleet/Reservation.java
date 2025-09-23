@@ -40,7 +40,6 @@ package fleet;
 
     //resize the array (add 4 spots)
     private void grow() {
-
         Booking[] newBookings = new Booking[this.bookings.length + growSize];
         for (int i = 0; i < this.bookings.length; i++) {
             newBookings[i] = this.bookings[i]; // copy over each element
