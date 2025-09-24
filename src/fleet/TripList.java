@@ -33,7 +33,7 @@ public class TripList {
         }
 
         // Traverse to find insertion point
-        while (curr != last && trip.getBooking().getEnd().compareTo(curr.trip.getBooking().getEnd()) > 0) {
+        while (curr != last && trip.getBooking().getEnd().compareTo(curr.trip.getBooking().getEnd()) >= 0) {
             prev = curr;
             curr = curr.next;
         }
