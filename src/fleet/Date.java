@@ -9,25 +9,25 @@ import java.util.StringTokenizer;
 public class Date implements Comparable<Date> {
 
 
-    public static final int Quadrennial = 4;
-    public static final int Centennial = 100;
-    public static final int Quatercentennial = 400;
-    public static final int monthsInYear = 12;
-    public static final int minimumMonth = 1;
-    public static final int minimumDay = 1;
-    public static final int daysInJanuary = 31;
-    public static final int daysInFebruaryNonLeap = 28;
-    public static final int daysInFebruaryLeap = 29;
-    public static final int daysInMarch = 31;
-    public static final int daysInApril = 30;
-    public static final int daysInMay = 31;
-    public static final int daysInJune = 30;
-    public static final int daysInJuly = 31;
-    public static final int daysInAugust = 31;
-    public static final int daysInSeptember = 30;
-    public static final int daysInOctober = 31;
-    public static final int daysInNovember = 30;
-    public static final int daysInDecember = 31;
+    public static final int QUADRENNIAL = 4;
+    public static final int CENTENNIAL = 100;
+    public static final int QUARTERCENTENNIAL = 400;
+    public static final int MONTHS_IN_YEAR = 12;
+    public static final int MINIMUM_MONTH = 1;
+    public static final int MINIMIM_DAY = 1;
+    public static final int DAYS_IN_JANUARY = 31;
+    public static final int DAYS_IN_FEBRUARY_NON_LEAP = 28;
+    public static final int DAYS_IN_FEBRUARY_LEAP = 29;
+    public static final int DAYS_IN_MARCH = 31;
+    public static final int DAYS_IN_APRIL = 30;
+    public static final int DAYS_IN_MAY = 31;
+    public static final int DAYS_IN_JUNE = 30;
+    public static final int DAYS_IN_JULY = 31;
+    public static final int DAYS_IN_AUGUST = 31;
+    public static final int DAYS_IN_SEPTEMBER = 30;
+    public static final int DAYS_IN_OCTOBER = 31;
+    public static final int DAYS_IN_NOVEMBER = 30;
+    public static final int DAYS_IN_DECEMBER = 31;
 
     private int year;
     private int month;
@@ -51,32 +51,32 @@ public class Date implements Comparable<Date> {
         }
 
         // Months: must be 1–12
-        if (month < minimumMonth || month > monthsInYear) {
+        if (month < MINIMUM_MONTH || month > MONTHS_IN_YEAR) {
             return false;
         }
 
         // Validate day
-        if (day < minimumDay) {
+        if (day < MINIMIM_DAY) {
             return false;
         }
-        int daysInFebruary = daysInFebruaryNonLeap;
+        int daysInThisFebruary = DAYS_IN_FEBRUARY_NON_LEAP;
         if (isLeap()){
-            daysInFebruary = daysInFebruaryLeap;
+            daysInThisFebruary = DAYS_IN_FEBRUARY_LEAP;
         }
         int maxDays;
         switch (month) {
-            case 1:  maxDays = daysInJanuary; break;
-            case 2:  maxDays = daysInFebruary; break;
-            case 3:  maxDays = daysInMarch; break;
-            case 4:  maxDays = daysInApril; break;
-            case 5:  maxDays = daysInMay; break;
-            case 6:  maxDays = daysInJune; break;
-            case 7:  maxDays = daysInJuly; break;
-            case 8:  maxDays = daysInAugust; break;
-            case 9:  maxDays = daysInSeptember; break;
-            case 10: maxDays = daysInOctober; break;
-            case 11: maxDays = daysInNovember; break;
-            case 12: maxDays = daysInDecember; break;
+            case 1:  maxDays = DAYS_IN_JANUARY; break;
+            case 2:  maxDays = daysInThisFebruary; break;
+            case 3:  maxDays = DAYS_IN_MARCH; break;
+            case 4:  maxDays = DAYS_IN_APRIL; break;
+            case 5:  maxDays = DAYS_IN_MAY; break;
+            case 6:  maxDays = DAYS_IN_JUNE; break;
+            case 7:  maxDays = DAYS_IN_JULY; break;
+            case 8:  maxDays = DAYS_IN_AUGUST; break;
+            case 9:  maxDays = DAYS_IN_SEPTEMBER; break;
+            case 10: maxDays = DAYS_IN_OCTOBER; break;
+            case 11: maxDays = DAYS_IN_NOVEMBER; break;
+            case 12: maxDays = DAYS_IN_DECEMBER; break;
             default: return false;
         }
 
@@ -85,9 +85,9 @@ public class Date implements Comparable<Date> {
 
     //Checks if a year is a leap year
     public boolean isLeap() {
-        if (this.year % Quadrennial == 0) {
-            if (this.year % Centennial == 0) {
-                if (this.year % Quatercentennial == 0) {
+        if (this.year % QUADRENNIAL == 0) {
+            if (this.year % CENTENNIAL == 0) {
+                if (this.year % QUARTERCENTENNIAL == 0) {
                     return true;
                 }
                 else {
