@@ -47,10 +47,6 @@ public class TripList {
     }
 
     public void print() {
-        if (last == null) {
-            System.out.println("No trips in the list.");
-            return;
-        }
         Node head = last.next; // first node
         Node curr = head;
 
