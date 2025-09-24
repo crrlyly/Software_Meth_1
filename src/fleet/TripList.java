@@ -25,6 +25,13 @@ public class TripList {
             return;
         }
 
+        if (trip.getBooking().getEnd().compareTo(last.trip.getBooking().getEnd()) >= 0) {
+            newNode.next = curr;      // new last  point to head
+            last.next = newNode;      // previous last points to new last
+            last = newNode;           // update last
+            return;
+        }
+
         // Traverse to find insertion point
         while (curr != last && trip.getBooking().getEnd().compareTo(curr.trip.getBooking().getEnd()) > 0) {
             prev = curr;
@@ -34,11 +41,6 @@ public class TripList {
         // Insert between prev and curr
         newNode.next = curr;
         prev.next = newNode;
-
-        // If inserted after last, update last
-        if (trip.getBooking().getEnd().compareTo(last.trip.getBooking().getEnd()) > 0) {
-            last = newNode;
-        }
     }
 
 
