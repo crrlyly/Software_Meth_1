@@ -1,8 +1,8 @@
 package fleet;
 /**
- This class implements bookings for the fleet including an equals and toString method.
-
- @author Alec Cotler
+ * This class implements bookings for the fleet including an equals and toString method.
+ *
+ * @author Alec Cotler
  */
 public class Booking {
     private Date begin;

@@ -1,9 +1,10 @@
 package fleet;
 /**
- First, a single, very descriptive sentence describing the class.
- Then, additional lines of description are added to elaborate on the
- details if necessary.
- @author [insert name]
+ * First, a single, very descriptive sentence describing the class.
+ * Then, additional lines of description are added to elaborate on the
+ * details if necessary.
+ *
+ * @author [insert name]
  */
 public class TripList {
     private Node last; //the reference to the last node of the linked list.
