@@ -1,9 +1,9 @@
 package fleet;
+
 /**
- First, a single, very descriptive sentence describing the class.
- Then, additional lines of description are added to elaborate on the
- details if necessary.
- @author Carly Chick
+ * Description
+ *
+ * @author Carly Chick
  */
 public class Trip {
     private Booking booking;

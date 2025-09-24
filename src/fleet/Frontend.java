@@ -9,9 +9,6 @@ import java.util.Calendar;
  */
 public class Frontend {
     private boolean running = true;
-    private static final String[] commands = {
-            "A", "D", "B", "C", "R", "PF", "PR", "PD", "PT"
-    };
     private final Fleet fleet = new Fleet();
     private final Reservation reservation = new Reservation();
     private final TripList tripList = new TripList();
@@ -147,7 +144,7 @@ public class Frontend {
         originalBooking.getVehicle().setMileage(currentMileage);
         Trip trip = new Trip(originalBooking, originalMileage, currentMileage);
         System.out.println("Trip completed: " + trip.toString());
-//        TripList.add(tripList);
+        tripList.add(trip);
     }
 
     private int findIndexOfEarliestEndDate(Booking booking){
@@ -360,13 +357,13 @@ public class Frontend {
 
     //uncomment once TripList is completed
     private void displayCompletedTrips(){
-        //if(tripList.getSize() == 0){
+        if(tripList.getSize() == 0){
             System.out.println("There is no archived trips.");
-            //return;
-        //}
-        //System.out.println("*List of completed trips ordered by ending date.");
-//        tripList.print();
-        //System.out.println("*end of list.");
+            return;
+        }
+        System.out.println("*List of completed trips ordered by ending date.");
+        tripList.print();
+        System.out.println("*end of list.");
     }
 
     public void run() {
