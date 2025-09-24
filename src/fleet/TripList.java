@@ -72,4 +72,7 @@ public class TripList {
         return count;
     }
 
+    public Node getLast() {
+        return last;
     }
+}
