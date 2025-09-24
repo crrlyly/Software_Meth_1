@@ -1,9 +1,8 @@
 package fleet;
 /**
- First, a single, very descriptive sentence describing the class.
- Then, additional lines of description are added to elaborate on the
- details if necessary.
- @author [insert name]
+ This class creates a circularly linked list of trips.
+ Additionally it inserts the trips in order of earliest end date, and can print the list/find the number of trips in the list.
+ @author Alec Cotler
  */
 public class TripList {
     private Node last; //the reference to the last node of the linked list.
@@ -22,7 +21,7 @@ public class TripList {
         // If new trip ends before or equal to head trip, insert at beginning
         if (trip.booking.getEnd().compareTo(curr.trip.booking.getEnd()) <= 0) {
             newNode.next = curr;
-            last.next = newNode; // new node is new head
+            last.next = newNode;
             return;
         }
 
@@ -48,12 +47,29 @@ public class TripList {
             System.out.println("No trips in the list.");
             return;
         }
-        Node head = last.next; // first node
+        Node head = last.next;
         Node curr = head;
 
         do {
-            System.out.println(curr.trip); // Trip.toString() should handle formatting
+            System.out.println(curr.trip);
             curr = curr.next;
-        } while (curr != head); // stop once we've circled back
+        } while (curr != head);
     }
+
+    public int getSize() {
+        if (last == null) {
+            return 0;
+        }
+
+        int count = 0;
+        Node curr = last.next; // head
+
+        do {
+            count++;
+            curr = curr.next;
+        } while (curr != last.next);
+
+        return count;
+    }
+
     }
