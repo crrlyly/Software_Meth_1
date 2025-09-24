@@ -42,6 +42,9 @@ public class TripList {
         }
     }
 
+    public Node getLast() {
+        return last;
+    }
 
     public void print() {
         if (last == null) {

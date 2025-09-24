@@ -357,7 +357,7 @@ public class Frontend {
 
     //uncomment once TripList is completed
     private void displayCompletedTrips(){
-        if(tripList.getSize() == 0){
+        if(tripList.getLast() == null){
             System.out.println("There is no archived trips.");
             return;
         }
