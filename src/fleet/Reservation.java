@@ -1,9 +1,10 @@
 package fleet;
 /**
- This class creates an array of bookings, where if the array is full adds 4 more spaces to the array
- Then, additional lines of description are added to elaborate on the
- details if necessary.
- @author Alec Cotler
+ * This class creates an array of bookings, where if the array is full adds 4 more spaces to the array
+ * Then, additional lines of description are added to elaborate on the
+ * details if necessary.
+ *
+ * @author Alec Cotler
  */
     public class Reservation {
     private Booking[] bookings;

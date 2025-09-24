@@ -1,6 +1,5 @@
 package fleet;
 import java.util.StringTokenizer;
-
 /**
  * A Date class that represents a calendar date in mm/dd/yyyy format.
  * Provides validation, string conversion, equality, and comparison methods.

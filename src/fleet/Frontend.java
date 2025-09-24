@@ -2,25 +2,31 @@ package fleet;
 import java.util.Scanner;
 import java.util.Calendar;
 /**
- First, a single, very descriptive sentence describing the class.
- Then, additional lines of description are added to elaborate on the
- details if necessary.
- @author Carly Chick
+ * First, a single, very descriptive sentence describing the class.
+ * Then, additional lines of description are added to elaborate on the
+ * details if necessary.
+ *
+ * @author Carly Chick
  */
 public class Frontend {
     private boolean running = true;
-    private static final String[] commands = {
-            "A", "D", "B", "C", "R", "PF", "PR", "PD", "PT"
-    };
     private final Fleet fleet = new Fleet();
     private final Reservation reservation = new Reservation();
     private final TripList tripList = new TripList();
 
+    /**
+     *
+     */
     private void terminate(){
         System.out.println("Vehicle Management System is terminated.");
         running = false;
     }
 
+    /**
+     *
+     * @param cmd
+     * @param parts
+     */
     private void processCommand(String cmd, String[] parts) {
         switch(cmd){
             case "A":
@@ -55,6 +61,10 @@ public class Frontend {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     private Date getToday(){
         Calendar calendar = Calendar.getInstance();
         String todayString = (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.DAY_OF_MONTH)
@@ -62,6 +72,11 @@ public class Frontend {
         return new Date(todayString);
     }
 
+    /**
+     *
+     * @param odo
+     * @return
+     */
     private boolean isValidOdometer(int odo) {
         try {
             return odo > 0;
@@ -70,6 +85,11 @@ public class Frontend {
         }
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     private Calendar convertDateToCalendar(Date obj){
         int month = obj.getMonth() - 1;
         int day  = obj.getDay();
@@ -81,6 +101,12 @@ public class Frontend {
         return calendar;
     }
 
+    /**
+     *
+     * @param startingDate
+     * @param endingDate
+     * @return
+     */
     private int daysBetween(Date startingDate, Date endingDate){
         if (startingDate == null || endingDate == null) return 0;
         Calendar start = convertDateToCalendar(startingDate);
@@ -100,10 +126,25 @@ public class Frontend {
         return (int) (diffMillis / (24L * 60 * 60 * 1000));
     }
 
+    /**
+     *
+     * @param aStart
+     * @param aEnd
+     * @param bStart
+     * @param bEnd
+     * @return
+     */
     private boolean rangesOverlapInclusive(Date aStart, Date aEnd, Date bStart, Date bEnd) {
         return aStart.compareTo(bEnd) <= 0 && aEnd.compareTo(bStart) >= 0;
     }
 
+    /**
+     *
+     * @param vehicle
+     * @param reqStart
+     * @param reqEnd
+     * @return
+     */
     private boolean isVehicleAvailable(Vehicle vehicle, Date reqStart, Date reqEnd) {
         Booking[] all = reservation.getBookings();
         if (all == null) return true;
@@ -118,6 +159,14 @@ public class Frontend {
         return true;
     }
 
+    /**
+     *
+     * @param vehicle
+     * @param reqStart
+     * @param reqEnd
+     * @param employee
+     * @return
+     */
     private boolean isVehicleAvailableSelf(Vehicle vehicle, Date reqStart, Date reqEnd, String employee) {
         Booking[] all = reservation.getBookings();
         if (all == null) return true;
@@ -132,6 +181,10 @@ public class Frontend {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     private Date getThreeMonthsFromToday(){
         Calendar calendar = Calendar.getInstance(); // today
         calendar.add(Calendar.MONTH, 3); // add 3 months
@@ -141,15 +194,25 @@ public class Frontend {
         return new Date(threeMonthsLater);
     }
 
-    //uncomment once TripList is completed
+    /**
+     *
+     * @param originalBooking
+     * @param originalMileage
+     * @param currentMileage
+     */
     private void moveFromReservationToTripList(Booking originalBooking, int originalMileage, int currentMileage){
         reservation.remove(originalBooking);
         originalBooking.getVehicle().setMileage(currentMileage);
         Trip trip = new Trip(originalBooking, originalMileage, currentMileage);
         System.out.println("Trip completed: " + trip.toString());
-//        TripList.add(tripList);
+        tripList.add(trip);
     }
 
+    /**
+     *
+     * @param booking
+     * @return
+     */
     private int findIndexOfEarliestEndDate(Booking booking){
         Date earliest = booking.getEnd();
         int index = -1;
@@ -164,6 +227,15 @@ public class Frontend {
         return index;
     }
 
+    /**
+     *
+     * @param parts
+     * @param startingDate
+     * @param endingDate
+     * @param today
+     * @param threeMonthsFromToday
+     * @return
+     */
     private boolean bookVehicleDateChecks(String[] parts, Date startingDate, Date endingDate, Date today, Date threeMonthsFromToday){
         if(!startingDate.isValid()){
             System.out.println(parts[1] + " - beginning date is not a valid calendar date.");
@@ -192,6 +264,10 @@ public class Frontend {
         return true;
     }
 
+    /**
+     *
+     * @param parts
+     */
     private void addToFleet(String[] parts){
         if(parts.length != 5){
             System.out.println("Not a valid A command.");
@@ -222,6 +298,10 @@ public class Frontend {
         System.out.println(vehicle.toString() + " has been added to the fleet.");
     }
 
+    /**
+     *
+     * @param parts
+     */
     private void removeFromFleet(String[] parts){
         if(parts.length != 2){
             System.out.println("Not a valid D command.");
@@ -242,6 +322,10 @@ public class Frontend {
         fleet.remove(vehicle);
     }
 
+    /**
+     *
+     * @param parts
+     */
     private void bookVehicle(String[] parts){
         if(parts.length != 5){
             System.out.println("Not a valid B command.");
@@ -278,6 +362,10 @@ public class Frontend {
         reservation.add(booking);
     }
 
+    /**
+     *
+     * @param parts
+     */
     private void cancelBooking(String[] parts){
         if(parts.length != 4){
             System.out.println("Not a valid B command.");
@@ -294,6 +382,10 @@ public class Frontend {
         reservation.remove(booking);
     }
 
+    /**
+     *
+     * @param parts
+     */
     private void returnVehicle(String[] parts){
         if(parts.length != 4){
             System.out.println("Not a valid R command.");
@@ -327,6 +419,9 @@ public class Frontend {
         moveFromReservationToTripList(originalBooking, originalMileage, currentMileage);
     }
 
+    /**
+     *
+     */
     private void displayVehicles(){
         if(fleet.getSize() == 0){
             System.out.println("There is no vehicle in the fleet.");
@@ -337,6 +432,9 @@ public class Frontend {
         System.out.println("*end of list.");
     }
 
+    /**
+     *
+     */
     private void displayBookings1(){
         if(reservation.getSize() == 0){
             System.out.println("There is no booking record.");
@@ -348,6 +446,9 @@ public class Frontend {
         System.out.println();
     }
 
+    /**
+     *
+     */
     private void displayBookings2(){
         if(reservation.getSize() == 0){
             System.out.println("There is no booking record.");
@@ -358,17 +459,22 @@ public class Frontend {
         System.out.println("*end of list.");
     }
 
-    //uncomment once TripList is completed
+    /**
+     *
+     */
     private void displayCompletedTrips(){
-        //if(tripList.getSize() == 0){
+        if(tripList.getLast() == null){
             System.out.println("There is no archived trips.");
-            //return;
-        //}
-        //System.out.println("*List of completed trips ordered by ending date.");
-//        tripList.print();
-        //System.out.println("*end of list.");
+            return;
+        }
+        System.out.println("*List of completed trips ordered by ending date.");
+        tripList.print();
+        System.out.println("*end of list.");
     }
 
+    /**
+     *
+     */
     public void run() {
         System.out.println("Vehicle Management System is running.");
         Scanner sc = new Scanner(System.in);
