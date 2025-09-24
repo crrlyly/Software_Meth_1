@@ -14,7 +14,7 @@ public class Date implements Comparable<Date> {
     public static final int QUARTERCENTENNIAL = 400;
     public static final int MONTHS_IN_YEAR = 12;
     public static final int MINIMUM_MONTH = 1;
-    public static final int MINIMIM_DAY = 1;
+    public static final int MINIMUM_DAY = 1;
     public static final int DAYS_IN_JANUARY = 31;
     public static final int DAYS_IN_FEBRUARY_NON_LEAP = 28;
     public static final int DAYS_IN_FEBRUARY_LEAP = 29;
@@ -56,7 +56,7 @@ public class Date implements Comparable<Date> {
         }
 
         // Validate day
-        if (day < MINIMIM_DAY) {
+        if (day < MINIMUM_DAY) {
             return false;
         }
         int daysInThisFebruary = DAYS_IN_FEBRUARY_NON_LEAP;
