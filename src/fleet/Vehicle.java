@@ -123,7 +123,7 @@ public class Vehicle implements Comparable<Vehicle> {
 
         int expectedOutput = -1;
         int actualOutput = one.compareTo(two);
-        System.out.println("**Test case 2: Testing two vehicles with the same make but this vehicle has an earlier date " +
+        System.out.println("**Test case 3: Testing two vehicles with the same make but this vehicle has an earlier date " +
                 "than the vehicle that was passed in.");
         testResult(one, two, expectedOutput, actualOutput);
     }
@@ -134,7 +134,7 @@ public class Vehicle implements Comparable<Vehicle> {
 
         int expectedOutput = 1;
         int actualOutput = one.compareTo(two);
-        System.out.println("**Test case 2: Testing two vehicles where this vehicle has a " +
+        System.out.println("**Test case 4: Testing two vehicles where this vehicle has a " +
                 "larger make which makes it go after the passed in vehicle.");
         testResult(one, two, expectedOutput, actualOutput);
     }
@@ -145,7 +145,7 @@ public class Vehicle implements Comparable<Vehicle> {
 
         int expectedOutput = -1;
         int actualOutput = one.compareTo(two);
-        System.out.println("**Test case 2: Testing two vehicles where this vehicle has a " +
+        System.out.println("**Test case 5: Testing two vehicles where this vehicle has a " +
                 "smaller make which makes it go before the passed in vehicle.");
         testResult(one, two, expectedOutput, actualOutput);
     }
