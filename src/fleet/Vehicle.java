@@ -48,7 +48,6 @@ public class Vehicle implements Comparable<Vehicle> {
         return this.plate + ":" + this.make + ":" + this.obtained + " [mileage:" + this.mileage + "]";
     }
 
-    //TODO
     @Override
     public int compareTo(Vehicle other) {
         if (other == null) {
@@ -65,7 +64,7 @@ public class Vehicle implements Comparable<Vehicle> {
             return byDate < 0 ? -1 : 1;
         }
 
-        return 0; // both make and obtained date are equal
+        return 0;
     }
 
     public String getPlate() {
@@ -90,22 +89,68 @@ public class Vehicle implements Comparable<Vehicle> {
 
     // Testbed main
     public static void main(String[] args) {
-        testTwoVehiclesEqual();
+        testVehiclesEqual();
+        testVehiclesSameMakeLaterThis();
+        testVehiclesSameMakeEarlierThis();
+        testVehiclesDiffMakesBiggerThis();
+        testVehiclesDiffMakesSmallerThis();
     }
-    /**
-     * Testing out the equals method with two identical Vehicle objects
-     */
-    private static void testTwoVehiclesEqual() {
-        Vehicle one = new Vehicle("192837D", null, Make.CHEVY, 38);
-        Vehicle two = new Vehicle("192837D", null, Make.CHEVY, 38);
 
-        boolean expectedOutput = true;
-        boolean actualOutput = one.equals(two);
+    private static void testVehiclesEqual() {
+        Vehicle one = new Vehicle("192837D", new Date("1/15/2008"), Make.CHEVY, 38);
+        Vehicle two = new Vehicle("192837D", new Date("1/15/2008"), Make.CHEVY, 38);
+
+        int expectedOutput = 0;
+        int actualOutput = one.compareTo(two);
         System.out.println("**Test case 1: Testing two same vehicles");
         testResult(one, two, expectedOutput, actualOutput);
     }
 
-    private static void testResult(Vehicle one, Vehicle two, boolean expectedOutput, boolean actualOutput) {
+    private static void testVehiclesSameMakeLaterThis() {
+        Vehicle one = new Vehicle("192437D", new Date("1/16/2008"), Make.CHEVY, 38);
+        Vehicle two = new Vehicle("194837D", new Date("1/15/2008"), Make.CHEVY, 38);
+
+        int expectedOutput = 1;
+        int actualOutput = one.compareTo(two);
+        System.out.println("**Test case 2: Testing two vehicles with the same make but this vehicle has a later date " +
+                "than the vehicle that was passed in.");
+        testResult(one, two, expectedOutput, actualOutput);
+    }
+
+    private static void testVehiclesSameMakeEarlierThis() {
+        Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.CHEVY, 38);
+        Vehicle two = new Vehicle("194837D", new Date("1/16/2008"), Make.CHEVY, 38);
+
+        int expectedOutput = -1;
+        int actualOutput = one.compareTo(two);
+        System.out.println("**Test case 2: Testing two vehicles with the same make but this vehicle has an earlier date " +
+                "than the vehicle that was passed in.");
+        testResult(one, two, expectedOutput, actualOutput);
+    }
+
+    private static void testVehiclesDiffMakesBiggerThis() {
+        Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.FORD, 38);
+        Vehicle two = new Vehicle("194837D", new Date("1/16/2008"), Make.CHEVY, 38);
+
+        int expectedOutput = 1;
+        int actualOutput = one.compareTo(two);
+        System.out.println("**Test case 2: Testing two vehicles where this vehicle has a " +
+                "larger make which makes it go after the passed in vehicle.");
+        testResult(one, two, expectedOutput, actualOutput);
+    }
+
+    private static void testVehiclesDiffMakesSmallerThis() {
+        Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.CHEVY, 38);
+        Vehicle two = new Vehicle("194837D", new Date("1/16/2008"), Make.FORD, 38);
+
+        int expectedOutput = -1;
+        int actualOutput = one.compareTo(two);
+        System.out.println("**Test case 2: Testing two vehicles where this vehicle has a " +
+                "smaller make which makes it go before the passed in vehicle.");
+        testResult(one, two, expectedOutput, actualOutput);
+    }
+
+    private static void testResult(Vehicle one, Vehicle two, int expectedOutput, int actualOutput) {
         System.out.println("Test input: " + one + " and " + two);
         System.out.println("Expected output: " + expectedOutput);
         System.out.println("Actual output: " + actualOutput);
