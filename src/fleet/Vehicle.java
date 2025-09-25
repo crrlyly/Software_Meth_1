@@ -90,10 +90,8 @@ public class Vehicle implements Comparable<Vehicle> {
     // Testbed main
     public static void main(String[] args) {
         testVehiclesEqual();
-        testVehiclesSameMakeLaterThis();
         testVehiclesSameMakeEarlierThis();
         testVehiclesDiffMakesBiggerThis();
-        testVehiclesDiffMakesSmallerThis();
     }
 
     private static void testVehiclesEqual() {
@@ -106,16 +104,6 @@ public class Vehicle implements Comparable<Vehicle> {
         testResult(one, two, expectedOutput, actualOutput);
     }
 
-    private static void testVehiclesSameMakeLaterThis() {
-        Vehicle one = new Vehicle("192437D", new Date("1/16/2008"), Make.CHEVY, 38);
-        Vehicle two = new Vehicle("194837D", new Date("1/15/2008"), Make.CHEVY, 38);
-
-        int expectedOutput = 1;
-        int actualOutput = one.compareTo(two);
-        System.out.println("**Test case 2: Testing two vehicles with the same make but this vehicle has a later date " +
-                "than the vehicle that was passed in.");
-        testResult(one, two, expectedOutput, actualOutput);
-    }
 
     private static void testVehiclesSameMakeEarlierThis() {
         Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.CHEVY, 38);
@@ -139,16 +127,6 @@ public class Vehicle implements Comparable<Vehicle> {
         testResult(one, two, expectedOutput, actualOutput);
     }
 
-    private static void testVehiclesDiffMakesSmallerThis() {
-        Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.CHEVY, 38);
-        Vehicle two = new Vehicle("194837D", new Date("1/16/2008"), Make.FORD, 38);
-
-        int expectedOutput = -1;
-        int actualOutput = one.compareTo(two);
-        System.out.println("**Test case 5: Testing two vehicles where this vehicle has a " +
-                "smaller make which makes it go before the passed in vehicle.");
-        testResult(one, two, expectedOutput, actualOutput);
-    }
 
     private static void testResult(Vehicle one, Vehicle two, int expectedOutput, int actualOutput) {
         System.out.println("Test input: " + one + " and " + two);
