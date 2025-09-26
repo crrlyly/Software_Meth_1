@@ -46,8 +46,8 @@ public class Date implements Comparable<Date> {
 
     // Checks if the date is a valid calendar date, including leap year logic
     public boolean isValid() {
-        if (year <= 0) {
-            return false; // optional: disallow year 0 or negatives
+        if (year <= 1000) {
+            return false;
         }
 
         // Months: must be 1–12
