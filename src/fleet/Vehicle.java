@@ -1,6 +1,6 @@
 package fleet;
 /**
- * Represents a vehicle with a license plate, obtained date, make, and mileage,
+ * The class represents a vehicle with a license plate, obtained date, make, and mileage,
  * Also has methods for comparison, equality checks, and string representation.
  *
  * @author Carly Chick
@@ -12,7 +12,7 @@ public class Vehicle implements Comparable<Vehicle> {
     private int mileage;
 
     /**
-     * Creates a Vehicle with the specified license plate.
+     * Creates a Vehicle with the given license plate.
      *
      * @param plate the license plate identifier for the vehicle
      */
@@ -21,7 +21,7 @@ public class Vehicle implements Comparable<Vehicle> {
     }
 
     /**
-     * Creates a Vehicle with the specified license plate, obtained date, make, and mileage.
+     * Creates a Vehicle with the given license plate, obtained date, make, and mileage.
      *
      * @param plate the license plate identifier for the vehicle
      * @param obtained the date the vehicle was acquired
@@ -35,6 +35,12 @@ public class Vehicle implements Comparable<Vehicle> {
         this.mileage = mileage;
     }
 
+    /**
+     * Checks if two vehicles are equal by their license plates.
+     *
+     * @param obj the reference object with which to compare.
+     * @return true if the plates are not null and their license plates are the same; false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -43,11 +49,27 @@ public class Vehicle implements Comparable<Vehicle> {
         return this.plate != null && this.plate.equals(other.plate);
     }
 
+    /**
+     * Method that creates a String that shows the information of the Vehicle.
+     *
+     * @return a string explaining all the vehicle information
+     */
     @Override
     public String toString() {
         return this.plate + ":" + this.make + ":" + this.obtained + " [mileage:" + this.mileage + "]";
     }
 
+    /**
+     * Compares "this" vehicle to another vehicle (passed in parameter) based on Make and then obtained date.
+     *
+     * @param other the Vehicle to compare to
+     * @return 0 if both the Make and obtained date are the same;
+     * -1 if this Vehicle's Make comes before the other Vehicle's Make alphabetically,
+     * or if the Makes are equal but this Vehicle's obtained date is earlier;
+     * 1 if this Vehicle's Make comes after the other Vehicle's Make alphabetically,
+     * or if the Makes are equal but this Vehicle's obtained date is later;
+     * Null pointer exception if the given Vehicle is null
+     */
     @Override
     public int compareTo(Vehicle other) {
         if (other == null) {
@@ -67,30 +89,55 @@ public class Vehicle implements Comparable<Vehicle> {
         return 0;
     }
 
+    /**
+     * Method to get the license plate.
+     *
+     * @return the license plate
+     */
     public String getPlate() {
         return plate;
     }
 
+    /**
+     * Method to get the obtained date.
+     *
+     * @return the obtained date
+     */
     public Date getObtained() {
         return obtained;
     }
 
+    /**
+     * Method to get the Make.
+     *
+     * @return the Make
+     */
     public Make getMake() {
         return make;
     }
 
+    /**
+     * Method to get the mileage.
+     *
+     * @return the mileage
+     */
     public int getMileage() {
         return mileage;
     }
 
+    /**
+     * Method to set a new mileage.
+     *
+     * @param mileage the new mileage to be set
+     */
     public void setMileage(int mileage) {
         this.mileage = mileage;
     }
 
-
     /**
+     * Testbed main to test the compareTo method.
      *
-     * @param args
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         testVehiclesEqual();
@@ -99,7 +146,7 @@ public class Vehicle implements Comparable<Vehicle> {
     }
 
     /**
-     * Testing method that compares the Make and Obtained Date of two equal vehicles.
+     * Test Case 1: Testing method that compares the Make and Obtained Date of two equal vehicles.
      */
     private static void testVehiclesEqual() {
         Vehicle one = new Vehicle("192837D", new Date("1/15/2008"), Make.CHEVY, 38);
@@ -112,8 +159,8 @@ public class Vehicle implements Comparable<Vehicle> {
     }
 
     /**
-     * Testing method that compares the Make and Obtained Date of two vehicles where the makes are the same but the
-     * first vehicle has an earlier Obtained Date.
+     * Test Case 2: Testing method that compares the Make and Obtained Date of two vehicles where the makes
+     * are the same but the first vehicle has an earlier Obtained Date.
      */
     private static void testVehiclesSameMakeEarlierThis() {
         Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.CHEVY, 38);
@@ -127,8 +174,8 @@ public class Vehicle implements Comparable<Vehicle> {
     }
 
     /**
-     * Testing method that compares the Make and Obtained Date of two vehicles where the Make of the first vehicle comes before
-     * the second vehicle's make alphabetically.
+     * Test Case 3: Testing method that compares the Make and Obtained Date of two vehicles where the
+     * Make of the first vehicle comes before the second vehicle's make alphabetically.
      */
     private static void testVehiclesDiffMakesBiggerThis() {
         Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.FORD, 38);
