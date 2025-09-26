@@ -1,7 +1,7 @@
 package fleet;
 /**
  * An enum class that enumerates through different vehicle makes.
- * Provides utility methods for parsing and comparing make strings.
+ * Provides methods for parsing and comparing make strings.
  *
  * @author Carly Chick
  */
@@ -12,11 +12,10 @@ public enum Make {
     HONDA;
 
     /**
-     * Parses a string into its corresponding Make value.
-     * Comparison is case-insensitive, so "ford" and "FORD" both match.
+     * Parses a string into its corresponding Make value (case-insensitive).
      *
-     * @param makeStr the string to parse, representing a vehicle make
-     * @return the matching Make constant if found, or null if no match exists
+     * @param makeStr the make string to parse
+     * @return the matching Make constant if found; null if no match exists
      */
     public static Make parseMake(String makeStr) {
         Make[] allMakes = Make.values();
@@ -27,6 +26,7 @@ public enum Make {
         }
         return null;
     }
+
     /**
      * Compares two strings lexicographically, ignoring case differences.
      *

@@ -1,12 +1,15 @@
 package fleet;
 /**
- * First, a single, very descriptive sentence describing the class.
- * Then, additional lines of description are added to elaborate on the
- * details if necessary.
+ * Application entry point for Project 1.
  *
  * @author Carly Chick
  */
 public class RunProject1 {
+    /**
+     * Launches the application.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         new Frontend().run();
     }

@@ -1,7 +1,7 @@
 package fleet;
 /**
- * Represents a vehicle with details such as license plate, acquisition date, make, and mileage,
- * and provides methods for comparison, equality checks, and string representation.
+ * Represents a vehicle with a license plate, obtained date, make, and mileage,
+ * Also has methods for comparison, equality checks, and string representation.
  *
  * @author Carly Chick
  */
@@ -12,7 +12,7 @@ public class Vehicle implements Comparable<Vehicle> {
     private int mileage;
 
     /**
-     * Constructs a Vehicle with the specified license plate.
+     * Creates a Vehicle with the specified license plate.
      *
      * @param plate the license plate identifier for the vehicle
      */
@@ -21,7 +21,7 @@ public class Vehicle implements Comparable<Vehicle> {
     }
 
     /**
-     * Constructs a Vehicle with the specified license plate, acquisition date, make, and mileage.
+     * Creates a Vehicle with the specified license plate, obtained date, make, and mileage.
      *
      * @param plate the license plate identifier for the vehicle
      * @param obtained the date the vehicle was acquired
@@ -87,7 +87,7 @@ public class Vehicle implements Comparable<Vehicle> {
         this.mileage = mileage;
     }
 
-    // Testbed main
+
     public static void main(String[] args) {
         testVehiclesEqual();
         testVehiclesSameMakeEarlierThis();
@@ -103,7 +103,6 @@ public class Vehicle implements Comparable<Vehicle> {
         System.out.println("**Test case 1: Testing two same vehicles");
         testResult(one, two, expectedOutput, actualOutput);
     }
-
 
     private static void testVehiclesSameMakeEarlierThis() {
         Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.CHEVY, 38);
@@ -126,7 +125,6 @@ public class Vehicle implements Comparable<Vehicle> {
                 "larger make which makes it go after the passed in vehicle.");
         testResult(one, two, expectedOutput, actualOutput);
     }
-
 
     private static void testResult(Vehicle one, Vehicle two, int expectedOutput, int actualOutput) {
         System.out.println("Test input: " + one + " and " + two);

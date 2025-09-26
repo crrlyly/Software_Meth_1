@@ -1,6 +1,6 @@
 package fleet;
 /**
- * A dynamic array–backed collection of Vehicle objects that supports
+ * A dynamic array of Vehicle objects that supports
  * add, remove, lookup, and a utility print sorted by make (then obtained date).
  * Capacity grows in fixed increments as elements are added.
  *

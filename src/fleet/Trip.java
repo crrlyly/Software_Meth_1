@@ -1,6 +1,7 @@
 package fleet;
 /**
- * Description
+ * Represents a trip with a booking, beginning mileage, and ending mileage,
+ * Also has methods for equality checks and string representation.
  *
  * @author Carly Chick
  */
@@ -10,6 +11,7 @@ public class Trip {
     private int endMileage;
 
     /**
+     * Creates a Trip with the booking, beginning mileage, and ending mileage.
      *
      * @param booking
      * @param beginMileage
@@ -23,14 +25,6 @@ public class Trip {
 
     public Booking getBooking() {
         return booking;
-    }
-
-    public int getBeginMileage() {
-        return beginMileage;
-    }
-
-    public int getEndMileage() {
-        return endMileage;
     }
 
     @Override
