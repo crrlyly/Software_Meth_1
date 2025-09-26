@@ -55,27 +55,43 @@ public class Booking {
         this.vehicle = vehicle;
     }
 
-    // returns the beginning date of the booking
+    /** returns the beginning date of the booking
+     *
+     * @return begin
+     */
     public Date getBegin() {
         return begin;
     }
 
-    // returns the ending date of the booking
+    /** returns the ending date of the booking
+     *
+     * @return end
+     */
     public Date getEnd() {
         return end;
     }
 
-    // returns the employee associated with the booking
+    /** returns the employee associated with the booking
+     *
+     * @return employee
+     */
     public Employee getEmployee() {
         return employee;
     }
 
-    // returns the vehicle associated with the booking
+    /** returns the vehicle associated with the booking
+     *
+     * @return vehicle
+     */
     public Vehicle getVehicle() {
         return vehicle;
     }
 
-    // tests if two bookings with beginning dates, ending dates, and a vehicle are equal to each other
+    /** tests if two bookings with beginning dates, ending dates, and a vehicle are equal to each other
+     *
+     * @param obj   the reference object with which to compare.
+     * @return true if the bookings are the same as each other, false if not
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -84,19 +100,30 @@ public class Booking {
         return begin.equals(other.begin) && end.equals(other.end) && vehicle.equals(other.vehicle);
     }
 
-    // returns the string representation of a booking
+    /** the string representation of a booking
+     *
+     * @return the string representation of a booking
+     */
     @Override
     public String toString() {
         return this.vehicle.toString() + " [beginning " + this.begin.toString() + " ending "
                 + this.end.toString() +":" + this.employee + "]";
     }
 
-    //tests if two bookings with no beginning dates are equal
+    /**tests if two bookings with no beginning dates are equal
+     *
+     * @param booking
+     * @return true if the bookings are equal, false if they are not
+     */
     public boolean equalsNoBeginDate(Booking booking){
         return this.end.equals(booking.end) && this.vehicle.equals(booking.vehicle);
     }
 
-    // tests if two bookings with no beginning or end dates are equal
+    /** tests if two bookings with no beginning or end dates are equal
+     *
+     * @param booking
+     * @return true if the bookings are equal, false if not
+     */
     public boolean equalsNoDate(Booking booking){
         return this.vehicle.equals(booking.vehicle);
     }

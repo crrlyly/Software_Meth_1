@@ -16,23 +16,35 @@ package fleet;
     private int size;
 
 
-
+    /** constructor for a new reservation
+     *
+     */
     public Reservation() {
         this.size = 0;
         this.bookings = new Booking[initialArrayLength];
     }
 
-    //returns the number of bookings in the reservation list.
+    /**returns the number of bookings in the reservation list.
+     *
+     * @return size
+     */
     public int getSize() {
         return size;
     }
 
-    // returns the reservation list of bookings
+    /** returns the reservation list of bookings
+     *
+     * @return bookings
+     */
     public Booking[] getBookings() {
         return bookings;
     }
 
-    //search for the given booking and return index, -1 if the booking is not in the reservation.
+    /**search for the given booking and return index, -1 if the booking is not in the reservation.
+     *
+     * @param booking
+     * @return the index of the booking
+     */
     private int find(Booking booking) {
         if (booking == null) {
             return NOT_FOUND;
@@ -45,7 +57,9 @@ package fleet;
         return NOT_FOUND;
     }
 
-    //resize the array (add 4 spots)
+    /** resize the array (add 4 spots)
+     *
+     */
     private void grow() {
         Booking[] newBookings = new Booking[this.bookings.length + growSize];
         for (int i = 0; i < this.bookings.length; i++) {
@@ -54,7 +68,10 @@ package fleet;
         this.bookings = newBookings;
     }
 
-    //add booking to end of array
+    /**add booking to end of array
+     *
+     * @param booking
+     */
     public void add(Booking booking) {
         if (booking == null) {
             return;
@@ -69,7 +86,10 @@ package fleet;
         size++;
     }
 
-    // removes a booking from the reservation list by deleting it, and then swapping the last booking in the list into its spot
+    /** removes a booking from the reservation list by deleting it, and then swapping the last booking in the list into its spot
+     *
+     * @param booking
+     */
     public void remove(Booking booking) {
         int bookingIndex = NOT_FOUND;
         if (contains(booking)) {
@@ -81,7 +101,11 @@ package fleet;
         size--;
     } //overwrite with last element
 
-    // checks if the reservation list contains a specific booking
+    /** checks if the reservation list contains a specific booking
+     *
+     * @param booking
+     * @return true if the reservation list contains the booking, false if not
+     */
     public boolean contains(Booking booking) {
         int index = find(booking);
         if (index == NOT_FOUND) {
@@ -90,7 +114,9 @@ package fleet;
         return true;
     }
 
-    // prints the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
+    /** prints the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
+     *
+     */
     public void printByVehicle() {
         sortByPlateThenDate();
         for (int i = 0; i < size; i++) {
@@ -99,7 +125,9 @@ package fleet;
 
     }
 
-    //prints the reservation list ordered by department then by employee (alphabetically)
+    /**prints the reservation list ordered by department then by employee (alphabetically)
+     *
+     */
     public void printByDept() {
         sortByDeptThenEmployee();
         Department dept = bookings[0].getEmployee().getDept();
@@ -113,7 +141,9 @@ package fleet;
         }
     }
 
-    //sorts the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
+    /**sorts the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
+     *
+     */
     public void sortByPlateThenDate() {
         for (int i = 1; i < size; i++) {
             Booking key = bookings[i];
@@ -134,7 +164,9 @@ package fleet;
         }
     }
 
-    //sorts the reservation list ordered by department then by employee (alphabetically)
+    /**sorts the reservation list ordered by department then by employee (alphabetically)
+     *
+     */
     public void sortByDeptThenEmployee() {
         for (int i = 1; i < size; i++) {
             Booking key = bookings[i];
@@ -154,7 +186,11 @@ package fleet;
         }
     }
 
-    //Sees if the booking is in the reservation list, and returns the booking if it is or null if not
+    /**Sees if the booking is in the reservation list, and returns the booking if it is or null if not
+     *
+     * @param booking
+     * @return booking if it is in the reservation list
+     */
     public Booking bookingLookup(Booking booking) {
         if(booking == null){
             return null;
@@ -166,7 +202,11 @@ package fleet;
         return bookings[index];
     }
 
-    // finds if a vehicle and ending date combo is in any of the bookings in the reservation list
+    /** finds if a vehicle and ending date combo is in any of the bookings in the reservation list
+     *
+     * @param booking
+     * @return true if the vehicle and end date combo exists in the reservation list, false if not
+     */
     public boolean findInstanceOfVehicle(Booking booking){
         if (booking == null) {
             return false;
@@ -179,7 +219,11 @@ package fleet;
         return false;
     }
 
-    //finds if a vehicle is in any of the bookings in the reservation list
+    /**finds if a vehicle is in any of the bookings in the reservation list
+     *
+     * @param booking
+     * @return true if a vehicle is in the reservation list, false if not
+     */
     public boolean findInstanceOfVehicleOnlyPlate(Booking booking){
         if (booking == null) {
             return false;

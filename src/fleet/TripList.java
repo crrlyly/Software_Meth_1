@@ -7,7 +7,10 @@ package fleet;
 public class TripList {
     private Node last; //the reference to the last node of the linked list.
 
-    //adds a trip to the trip linked list in order of ending date
+    /**
+    adds a trip to the trip linked list in order of ending date
+     @param trip , the trip object to be added to the list
+     */
     public void add(Trip trip) {
         Node newNode = new Node(trip);
 
@@ -45,7 +48,8 @@ public class TripList {
         prev.next = newNode;
     }
 
-// prints all the trips in the trip linked list
+    /** prints all the trips in the trip linked list
+     */
     public void print() {
         if (last == null) {
             System.out.println("No trips in the list.");
@@ -60,7 +64,10 @@ public class TripList {
         } while (curr != head);
     }
 
-    // returns the amount of trips in the trip linked list
+    /** returns the amount of trips in the trip linked list
+     *
+     * @return count, the number of trips in the triplist
+     */
     public int getSize() {
         if (last == null) {
             return 0;
@@ -77,7 +84,10 @@ public class TripList {
         return count;
     }
 
-    // returns the last node in the linked list
+    /** returns the last node in the linked list
+     *
+     * @return last
+     */
     public Node getLast() {
         return last;
     }

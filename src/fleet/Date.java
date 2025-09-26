@@ -32,9 +32,8 @@ public class Date implements Comparable<Date> {
     private int year;
     private int month;
     private int day;
-    // Constructor: parses a date string in "mm/dd/yyyy" format
     /**
-     *
+     *Constructor: parses a date string in "mm/dd/yyyy" format
      * @param dateStr
      */
     public Date(String dateStr) {
@@ -44,7 +43,10 @@ public class Date implements Comparable<Date> {
         this.year = Integer.parseInt(st.nextToken());
     }
 
-    // Checks if the date is a valid calendar date, including leap year logic
+    /** Checks if the date is a valid calendar date, including leap year logic
+     *
+     * @return true if it is a valid calendar date, false if it is not
+     */
     public boolean isValid() {
         if (year <= 1000) {
             return false;
@@ -83,7 +85,10 @@ public class Date implements Comparable<Date> {
         return day <= maxDays;
     }
 
-    //Checks if a year is a leap year
+    /**Checks if a year is a leap year
+     *
+     * @return true if the year is a leap year, false if it is not a leap year
+     */
     public boolean isLeap() {
         if (this.year % QUADRENNIAL == 0) {
             if (this.year % CENTENNIAL == 0) {
@@ -103,7 +108,11 @@ public class Date implements Comparable<Date> {
         }
     }
 
-    //checks if two dates are equal
+    /**checks if two dates are equal
+     *
+     * @param obj   the reference object with which to compare.
+     * @return true if the objects are equal, false if they are not
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -112,13 +121,20 @@ public class Date implements Comparable<Date> {
         return month == other.month && day == other.day && year == other.year;
     }
 
-    //returns the date in mm/dd/yyyy format
+    /**returns the date in mm/dd/yyyy format
+     *
+     * @return the string representation of the date (mm/dd/yyyy)
+     */
     @Override
     public String toString() {
         return this.month + "/" + this.day + "/" + this.year;
     }
 
-    //returns -1 if this date comes before the other date, 0 if they are the same date, or 1 if this date come after the other date
+    /**returns -1 if this date comes before the other date, 0 if they are the same date, or 1 if this date come after the other date
+     *
+     * @param other , the date being compared to
+     * @return -1 if the date you are comparing comes before other, 0 if they are the same date, and 1 if the date you are comparing comes after other
+     */
     @Override
     public int compareTo(Date other) {
         if (other == null) {
@@ -133,17 +149,26 @@ public class Date implements Comparable<Date> {
         return Integer.compare(this.day, other.day);
     }
 
-    //returns this date's year
+    /**returns this date's year
+     *
+     * @return year
+     */
     public int getYear() {
         return year;
     }
 
-    //returns this date's month
+    /**returns this date's month
+     *
+     * @return month
+     */
     public int getMonth() {
         return month;
     }
 
-    //returns this date's day
+    /**returns this date's day
+     *
+     * @return day
+     */
     public int getDay() {
         return day;
     }
