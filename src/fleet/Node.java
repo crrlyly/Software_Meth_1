@@ -1,6 +1,6 @@
 package fleet;
 /**
- * Description
+ * implements the nodes of a linked list
  *
  * @author Alec Cotler
  */
