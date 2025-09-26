@@ -45,9 +45,9 @@ public enum Make {
             char c1 = Character.toLowerCase(first.charAt(i));
             char c2 = Character.toLowerCase(second.charAt(i));
             if (c1 != c2) {
-                return c1 - c2; // negative if c1 < c2, positive if c1 > c2
+                return c1 - c2;
             }
         }
-        return len1 - len2; // shorter string comes first if prefix matches
+        return len1 - len2;
     }
 }
