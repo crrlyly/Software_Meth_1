@@ -88,12 +88,19 @@ public class Vehicle implements Comparable<Vehicle> {
     }
 
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         testVehiclesEqual();
         testVehiclesSameMakeEarlierThis();
         testVehiclesDiffMakesBiggerThis();
     }
 
+    /**
+     * Testing method that compares the Make and Obtained Date of two equal vehicles.
+     */
     private static void testVehiclesEqual() {
         Vehicle one = new Vehicle("192837D", new Date("1/15/2008"), Make.CHEVY, 38);
         Vehicle two = new Vehicle("192837D", new Date("1/15/2008"), Make.CHEVY, 38);
@@ -104,6 +111,10 @@ public class Vehicle implements Comparable<Vehicle> {
         testResult(one, two, expectedOutput, actualOutput);
     }
 
+    /**
+     * Testing method that compares the Make and Obtained Date of two vehicles where the makes are the same but the
+     * first vehicle has an earlier Obtained Date.
+     */
     private static void testVehiclesSameMakeEarlierThis() {
         Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.CHEVY, 38);
         Vehicle two = new Vehicle("194837D", new Date("1/16/2008"), Make.CHEVY, 38);
@@ -115,6 +126,10 @@ public class Vehicle implements Comparable<Vehicle> {
         testResult(one, two, expectedOutput, actualOutput);
     }
 
+    /**
+     * Testing method that compares the Make and Obtained Date of two vehicles where the Make of the first vehicle comes before
+     * the second vehicle's make alphabetically.
+     */
     private static void testVehiclesDiffMakesBiggerThis() {
         Vehicle one = new Vehicle("192437D", new Date("1/15/2008"), Make.FORD, 38);
         Vehicle two = new Vehicle("194837D", new Date("1/16/2008"), Make.CHEVY, 38);
@@ -126,6 +141,14 @@ public class Vehicle implements Comparable<Vehicle> {
         testResult(one, two, expectedOutput, actualOutput);
     }
 
+    /**
+     * Method that tests the testing methods.
+     *
+     * @param one the first Vehicle object
+     * @param two the second Vehicle object
+     * @param expectedOutput the correct output
+     * @param actualOutput the output that the testing method gave
+     */
     private static void testResult(Vehicle one, Vehicle two, int expectedOutput, int actualOutput) {
         System.out.println("Test input: " + one + " and " + two);
         System.out.println("Expected output: " + expectedOutput);
