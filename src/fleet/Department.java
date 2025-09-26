@@ -33,7 +33,7 @@ public enum Department {
 
     /**
      *
-     * @return
+     * @return a grammatically correct string that corresponds with a Department enum
      */
     public String convertToWords(){
         switch(this.name()){

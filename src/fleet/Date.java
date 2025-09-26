@@ -190,8 +190,6 @@ public class Date implements Comparable<Date> {
         System.out.println("**Test case 1: Testing a year that is too small");
         testResult(date, expectedOutput, actualOutput);
     }
-
-
     private static void testMonthNotInRange() {
         Date date = new Date("13/22/2025");
 
@@ -200,7 +198,6 @@ public class Date implements Comparable<Date> {
         System.out.println("**Test case 2: Testing a month that is not in range");
         testResult(date, expectedOutput, actualOutput);
     }
-
     private static void testDayNotInRange() {
         Date date = new Date("01/34/2024");
 
