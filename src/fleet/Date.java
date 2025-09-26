@@ -103,6 +103,7 @@ public class Date implements Comparable<Date> {
         }
     }
 
+    //checks if two dates are equal
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -111,11 +112,13 @@ public class Date implements Comparable<Date> {
         return month == other.month && day == other.day && year == other.year;
     }
 
+    //returns the date in mm/dd/yyyy format
     @Override
     public String toString() {
         return this.month + "/" + this.day + "/" + this.year;
     }
 
+    //returns -1 if this date comes before the other date, 0 if they are the same date, or 1 if this date come after the other date
     @Override
     public int compareTo(Date other) {
         if (other == null) {
@@ -130,15 +133,91 @@ public class Date implements Comparable<Date> {
         return Integer.compare(this.day, other.day);
     }
 
+    //returns this date's year
     public int getYear() {
         return year;
     }
 
+    //returns this date's month
     public int getMonth() {
         return month;
     }
 
+    //returns this date's day
     public int getDay() {
         return day;
     }
+
+    public static void main(String[] args) {
+        testYearSmall();
+        testMonthNotInRange();
+        testDayNotInRange();
+        testNotALeapYear();
+        testValidDate();
+        testValidLeapYear();
+    }
+
+    private static void testYearSmall() {
+        Date date = new Date("01/23/999");
+
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case 1: Testing a year that is too small");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
+
+    private static void testMonthNotInRange() {
+        Date date = new Date("13/22/2025");
+
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case 2: Testing a month that is not in range");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
+    private static void testDayNotInRange() {
+        Date date = new Date("01/34/2024");
+
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case 3: Testing a day that is not in range");
+        testResult(date, expectedOutput, actualOutput);
+    }
+    private static void testNotALeapYear() {
+        Date date = new Date("02/29/2100");
+
+        boolean expectedOutput = false;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case 4: Testing a date on february 29th that is not a leap year");
+        testResult(date, expectedOutput, actualOutput);
+    }
+    private static void testValidDate() {
+        Date date = new Date("12/31/2024");
+
+        boolean expectedOutput = true;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case 5: Testing a valid date");
+        testResult(date, expectedOutput, actualOutput);
+    }
+    private static void testValidLeapYear() {
+        Date date = new Date("02/29/2400");
+
+        boolean expectedOutput = true;
+        boolean actualOutput = date.isValid();
+        System.out.println("**Test case 6: Testing a valid leap year");
+        testResult(date, expectedOutput, actualOutput);
+    }
+
+
+    private static void testResult(Date date, boolean expectedOutput, boolean actualOutput) {
+        System.out.println("Test input: " + date);
+        System.out.println("Expected output: " + expectedOutput);
+        System.out.println("Actual output: " + actualOutput);
+        System.out.println(expectedOutput != actualOutput ? " (FAIL)\n" : " (PASS)\n");
+    }
 }
+
+
+
+
