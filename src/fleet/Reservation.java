@@ -7,21 +7,27 @@ package fleet;
  * @author Alec Cotler
  */
     public class Reservation {
-    private Booking[] bookings;
-    private int size;
+
     public static final int initialArrayLength = 4;
     public static int NOT_FOUND = -1;
     public static int growSize = 4;
+
+    private Booking[] bookings;
+    private int size;
+
+
 
     public Reservation() {
         this.size = 0;
         this.bookings = new Booking[initialArrayLength];
     }
 
+    //returns the number of bookings in the reservation list.
     public int getSize() {
         return size;
     }
 
+    // returns the reservation list of bookings
     public Booking[] getBookings() {
         return bookings;
     }
@@ -63,7 +69,7 @@ package fleet;
         size++;
     }
 
-
+    // removes a booking from the reservation list by deleting it, and then swapping the last booking in the list into its spot
     public void remove(Booking booking) {
         int bookingIndex = NOT_FOUND;
         if (contains(booking)) {
@@ -75,6 +81,7 @@ package fleet;
         size--;
     } //overwrite with last element
 
+    // checks if the reservation list contains a specific booking
     public boolean contains(Booking booking) {
         int index = find(booking);
         if (index == NOT_FOUND) {
@@ -83,14 +90,16 @@ package fleet;
         return true;
     }
 
+    // prints the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
     public void printByVehicle() {
         sortByPlateThenDate();
         for (int i = 0; i < size; i++) {
             System.out.println(bookings[i]);
         }
 
-    } //ordered by plate then beginning date
+    }
 
+    //prints the reservation list ordered by department then by employee (alphabetically)
     public void printByDept() {
         sortByDeptThenEmployee();
         Department dept = bookings[0].getEmployee().getDept();
@@ -102,8 +111,9 @@ package fleet;
             }
             System.out.println(bookings[i]);
         }
-    } //ordered by department then by employee
+    }
 
+    //sorts the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
     public void sortByPlateThenDate() {
         for (int i = 1; i < size; i++) {
             Booking key = bookings[i];
@@ -124,6 +134,7 @@ package fleet;
         }
     }
 
+    //sorts the reservation list ordered by department then by employee (alphabetically)
     public void sortByDeptThenEmployee() {
         for (int i = 1; i < size; i++) {
             Booking key = bookings[i];
@@ -143,6 +154,7 @@ package fleet;
         }
     }
 
+    //Sees if the booking is in the reservation list, and returns the booking if it is or null if not
     public Booking bookingLookup(Booking booking) {
         if(booking == null){
             return null;
@@ -154,6 +166,7 @@ package fleet;
         return bookings[index];
     }
 
+    // finds if a vehicle and ending date combo is in any of the bookings in the reservation list
     public boolean findInstanceOfVehicle(Booking booking){
         if (booking == null) {
             return false;
@@ -166,6 +179,7 @@ package fleet;
         return false;
     }
 
+    //finds if a vehicle is in any of the bookings in the reservation list
     public boolean findInstanceOfVehicleOnlyPlate(Booking booking){
         if (booking == null) {
             return false;
@@ -178,13 +192,4 @@ package fleet;
         return false;
     }
 }
-
-
-
-
-
-    //please refer to my removeFromFleet method in Frontend to see what im doing for reservation and create the
-    //.contains method according to that
-
-    //also use my .equals method in Vehicle class for it but u prob already knew that
 
