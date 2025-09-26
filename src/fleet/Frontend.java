@@ -2,9 +2,7 @@ package fleet;
 import java.util.Scanner;
 import java.util.Calendar;
 /**
- * First, a single, very descriptive sentence describing the class.
- * Then, additional lines of description are added to elaborate on the
- * details if necessary.
+ * Console based frontend for our Vehicle Management System.
  *
  * @author Carly Chick
  */
@@ -15,7 +13,7 @@ public class Frontend {
     private final TripList tripList = new TripList();
 
     /**
-     *
+     * Terminates the program loop and prints a termination message.
      */
     private void terminate(){
         System.out.println("Vehicle Management System is terminated.");
@@ -23,9 +21,10 @@ public class Frontend {
     }
 
     /**
+     * Routes a command to the appropriate handler.
      *
-     * @param cmd
-     * @param parts
+     * @param cmd the command token
+     * @param parts the full tokenized input line from the console
      */
     private void processCommand(String cmd, String[] parts) {
         switch(cmd){
@@ -62,8 +61,9 @@ public class Frontend {
     }
 
     /**
+     * Finds today's date using the Calendar library and returns it as a Date.
      *
-     * @return
+     * @return a Date representing the current day (mm/dd/yyyy)
      */
     private Date getToday(){
         Calendar calendar = Calendar.getInstance();
@@ -73,9 +73,10 @@ public class Frontend {
     }
 
     /**
+     * Validates an odometer reading.
      *
-     * @param odo
-     * @return
+     * @param odo the odometer value to check
+     * @return true if odo is a positive int; false otherwise
      */
     private boolean isValidOdometer(int odo) {
         try {
@@ -86,14 +87,15 @@ public class Frontend {
     }
 
     /**
+     * Converts a Date to a Calendar set to midnight.
      *
-     * @param obj
-     * @return
+     * @param date the date to convert
+     * @return a Calendar set to obj's year/month/day at 00:00:00.000
      */
-    private Calendar convertDateToCalendar(Date obj){
-        int month = obj.getMonth() - 1;
-        int day  = obj.getDay();
-        int year = obj.getYear();
+    private Calendar convertDateToCalendar(Date date){
+        int month = date.getMonth() - 1;
+        int day  = date.getDay();
+        int year = date.getYear();
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day, 0, 0, 0);
@@ -102,10 +104,12 @@ public class Frontend {
     }
 
     /**
+     * Finds whole-day difference between two dates, ignoring time-of-day.
      *
-     * @param startingDate
-     * @param endingDate
-     * @return
+     * @param startingDate the start date
+     * @param endingDate the end date
+     * @return number of days between end and start; may be negative if endingDate less than or equal to startingDate;
+     *          returns 0 if either argument is null
      */
     private int daysBetween(Date startingDate, Date endingDate){
         if (startingDate == null || endingDate == null) return 0;
@@ -265,8 +269,9 @@ public class Frontend {
     }
 
     /**
+     * Adds a vehicle to the fleet.
      *
-     * @param parts
+     * @param parts tokenized input (must be length 5)
      */
     private void addToFleet(String[] parts){
         if(parts.length != 5){
@@ -299,8 +304,9 @@ public class Frontend {
     }
 
     /**
+     * Removes a vehicle from the fleet.
      *
-     * @param parts
+     * @param parts tokenized input (must be length 2)
      */
     private void removeFromFleet(String[] parts){
         if(parts.length != 2){
@@ -323,8 +329,9 @@ public class Frontend {
     }
 
     /**
+     * Creates a reservation.
      *
-     * @param parts
+     * @param parts tokenized input (must be length 5)
      */
     private void bookVehicle(String[] parts){
         if(parts.length != 5){
@@ -363,8 +370,9 @@ public class Frontend {
     }
 
     /**
+     * Cancels an existing reservation.
      *
-     * @param parts
+     * @param parts tokenized input (must be length 4)
      */
     private void cancelBooking(String[] parts){
         if(parts.length != 4){
@@ -383,8 +391,9 @@ public class Frontend {
     }
 
     /**
+     * Returns a vehicle and archives the trip.
      *
-     * @param parts
+     * @param parts tokenized input (must be length 4)
      */
     private void returnVehicle(String[] parts){
         if(parts.length != 4){
@@ -420,7 +429,7 @@ public class Frontend {
     }
 
     /**
-     *
+     * Prints all vehicles in the fleet ordered by make and obtained date.
      */
     private void displayVehicles(){
         if(fleet.getSize() == 0){
@@ -433,7 +442,7 @@ public class Frontend {
     }
 
     /**
-     *
+     * Prints reservations ordered by license plate and beginning date.
      */
     private void displayBookings1(){
         if(reservation.getSize() == 0){
@@ -447,7 +456,7 @@ public class Frontend {
     }
 
     /**
-     *
+     * Prints reservations ordered by department and employee.
      */
     private void displayBookings2(){
         if(reservation.getSize() == 0){
@@ -460,7 +469,7 @@ public class Frontend {
     }
 
     /**
-     *
+     * Prints archived trips ordered by ending date.
      */
     private void displayCompletedTrips(){
         if(tripList.getLast() == null){
@@ -473,7 +482,7 @@ public class Frontend {
     }
 
     /**
-     *
+     * Runs the command loop for the Vehicle Management System.
      */
     public void run() {
         System.out.println("Vehicle Management System is running.");

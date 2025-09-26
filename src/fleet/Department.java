@@ -1,7 +1,7 @@
 package fleet;
 /**
  * The Department enum represents the different departments
- * that employees can belong to. Each constant corresponds to a
+ * that employees can belong to. Each constant is a
  * field of study.
  *
  * @author Carly Chick
@@ -14,8 +14,8 @@ public enum Department {
     BusinessAnalyticsAndInformationTechnology;
 
     /**
-     * Converts a string into the matching department constant.
-     * The match is case-insensitive, so for example
+     * Turns a string into the matching department constant.
+     * It is case-insensitive, so for example
      * "math" and "Math" will both return the Math constant.
      *
      * @param departmentStr the string to match against department names
@@ -31,6 +31,10 @@ public enum Department {
         return null; // not found
     }
 
+    /**
+     *
+     * @return
+     */
     public String convertToWords(){
         switch(this.name()){
             case "ComputerScience":
