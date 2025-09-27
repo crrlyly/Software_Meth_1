@@ -90,7 +90,7 @@ public class Frontend {
      * Converts a Date to a Calendar set to midnight.
      *
      * @param date the date to convert
-     * @return a Calendar set to obj's year/month/day at 00:00:00.000
+     * @return a Calendar set to obj's year/month/day at 00:00:00
      */
     private Calendar convertDateToCalendar(Date date){
         int month = date.getMonth() - 1;
