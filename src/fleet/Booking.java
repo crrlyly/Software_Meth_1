@@ -11,7 +11,7 @@ public class Booking {
     private Vehicle vehicle;
 
     /**
-     * constructor of a booking with just a vehicle
+     * Constructor of a booking with just a vehicle.
      * @param vehicle the vehicle being booked
      */
     public Booking(Vehicle vehicle) {
@@ -19,7 +19,7 @@ public class Booking {
     }
 
     /**
-     * constructor of a booking with the same beginning and ending date, and a vehicle
+     * Constructor of a booking with the same beginning and ending date, and a vehicle.
      * @param end the ending date of the booking
      * @param vehicle the vehicle being booked
      */
@@ -30,7 +30,7 @@ public class Booking {
     }
 
     /**
-     * constructor of a booking with a beginning date, end date, and vehicle
+     * Constructor of a booking with a beginning date, end date, and vehicle.
      * @param begin the beginning date of the booking
      * @param end the ending date of the booking
      * @param vehicle the vehicle being booked
@@ -42,7 +42,7 @@ public class Booking {
     }
 
     /**
-     * constructor of a booking with a beginning date, end date, vehicle, and employee
+     * Constructor of a booking with a beginning date, end date, vehicle, and employee.
      * @param begin the beginning date of the booking
      * @param end the ending date of the booking
      * @param employee the employee booking the vehicle
@@ -56,15 +56,15 @@ public class Booking {
     }
 
     /**
-     * returns the beginning date of the booking
+     * Returns the beginning date of the booking.
      * @return begin the beginning date of the booking
      */
     public Date getBegin() {
         return begin;
     }
 
-    /** returns
-     * the ending date of the booking
+    /**
+     * Returns the ending date of the booking.
      * @return end the ending date of the booking
      */
     public Date getEnd() {
@@ -72,7 +72,7 @@ public class Booking {
     }
 
     /**
-     * returns the employee associated with the booking
+     * Returns the employee associated with the booking.
      * @return employee the employee in the booking
      */
     public Employee getEmployee() {
@@ -80,7 +80,7 @@ public class Booking {
     }
 
     /**
-     * returns the vehicle associated with the booking
+     * Returns the vehicle associated with the booking.
      * @return vehicle the vehicle in the booking
      */
     public Vehicle getVehicle() {
@@ -88,7 +88,7 @@ public class Booking {
     }
 
     /**
-     * tests if two bookings with beginning dates, ending dates, and a vehicle are equal to each other
+     * Tests if two bookings with beginning dates, ending dates, and a vehicle are equal to each other.
      * @param obj   the reference object with which to compare.
      * @return true if the bookings are the same as each other, false if not
      */
@@ -101,7 +101,7 @@ public class Booking {
     }
 
     /**
-     * the string representation of a booking
+     * The string representation of a booking.
      * @return the string representation of a booking
      */
     @Override
@@ -111,7 +111,7 @@ public class Booking {
     }
 
     /**
-     * tests if two bookings with no beginning dates are equal
+     * Tests if two bookings with no beginning dates are equal.
      * @param booking the booking being compared to
      * @return true if the bookings are equal, false if they are not
      */
@@ -120,7 +120,7 @@ public class Booking {
     }
 
     /**
-     * tests if two bookings with no beginning or end dates are equal
+     * Tests if two bookings with no beginning or end dates are equal.
      * @param booking the booking being compared to
      * @return true if the bookings are equal, false if not
      */
