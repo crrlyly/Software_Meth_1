@@ -12,7 +12,7 @@ public class Booking {
 
     /**
      * constructor of a booking with just a vehicle
-     * @param vehicle the vehicle being booked
+     * @param vehicle
      */
     public Booking(Vehicle vehicle) {
         this.vehicle = vehicle;
@@ -20,8 +20,8 @@ public class Booking {
 
     /**
      * constructor of a booking with the same beginning and ending date, and a vehicle
-     * @param end the end date of the booking
-     * @param vehicle the vehicle being booked
+     * @param end
+     * @param vehicle
      */
     public Booking(Date end, Vehicle vehicle){
         this.begin = end;
@@ -31,9 +31,9 @@ public class Booking {
 
     /**
      * constructor of a booking with a beginning date, end date, and vehicle
-     * @param begin the beginning date of the booking
-     * @param end the ending date of the booking
-     * @param vehicle the vehicle being booked
+     * @param begin
+     * @param end
+     * @param vehicle
      */
     public Booking(Date begin, Date end, Vehicle vehicle){
         this.begin = begin;
@@ -43,10 +43,10 @@ public class Booking {
 
     /**
      * constructor of a booking with a beginning date, end date, vehicle, and employee
-     * @param begin the beginning date of the booking
-     * @param end the ending date of the booking
-     * @param employee the employee booking the vehicle
-     * @param vehicle the vehicle being booked
+     * @param begin
+     * @param end
+     * @param employee
+     * @param vehicle
      */
     public Booking(Date begin, Date end, Employee employee, Vehicle vehicle) {
         this.begin = begin;

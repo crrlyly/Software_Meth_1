@@ -90,7 +90,7 @@ public class Frontend {
      * Converts a Date to a Calendar set to midnight.
      *
      * @param date the date to convert
-     * @return a Calendar set to obj's year/month/day at 00:00:00.000
+     * @return a Calendar set to obj's year/month/day at 00:00:00
      */
     private Calendar convertDateToCalendar(Date date){
         int month = date.getMonth() - 1;
@@ -104,12 +104,12 @@ public class Frontend {
     }
 
     /**
-     * Finds whole-day difference between two dates, ignoring time-of-day.
+     * Finds whole day difference between two dates, ignoring time-of-day.
      *
      * @param startingDate the start date
      * @param endingDate the end date
      * @return number of days between end and start; may be negative if endingDate less than or equal to startingDate;
-     *          returns 0 if either argument is null
+     * returns 0 if either argument is null
      */
     private int daysBetween(Date startingDate, Date endingDate){
         if (startingDate == null || endingDate == null) return 0;
