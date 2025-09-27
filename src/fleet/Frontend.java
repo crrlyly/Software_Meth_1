@@ -104,7 +104,7 @@ public class Frontend {
     }
 
     /**
-     * Finds whole-day difference between two dates, ignoring time-of-day.
+     * Finds whole day difference between two dates, ignoring time-of-day.
      *
      * @param startingDate the start date
      * @param endingDate the end date
