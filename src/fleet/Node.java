@@ -11,7 +11,7 @@ public class Node {
 
     /**
      *
-     * @param trip
+     * @param trip the trip to be added to the linked list
      */
     public Node(Trip trip) {
         this.trip = trip;
