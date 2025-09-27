@@ -136,17 +136,6 @@ public class Vehicle implements Comparable<Vehicle> {
     }
 
     /**
-     * Testbed main to test the compareTo method.
-     *
-     * @param args command line arguments
-     */
-    public static void main(String[] args) {
-        testVehiclesEqual();
-        testVehiclesSameMakeEarlierThis();
-        testVehiclesDiffMakesBiggerThis();
-    }
-
-    /**
      * Test Case 1: Testing method that compares the Make and Obtained Date of two equal vehicles.
      */
     private static void testVehiclesEqual() {
@@ -185,7 +174,7 @@ public class Vehicle implements Comparable<Vehicle> {
         int expectedOutput = 1;
         int actualOutput = one.compareTo(two);
         System.out.println("**Test case 3: Testing two vehicles where this vehicle has a " +
-                "make that comes before the second vehicle's make alphabetically.");
+                "make that comes after the second vehicle's make alphabetically.");
         testResult(one, two, expectedOutput, actualOutput);
     }
 
@@ -202,5 +191,16 @@ public class Vehicle implements Comparable<Vehicle> {
         System.out.println("Expected output: " + expectedOutput);
         System.out.println("Actual output: " + actualOutput);
         System.out.println(expectedOutput != actualOutput ? " (FAIL)\n" : " (PASS)\n");
+    }
+
+    /**
+     * Testbed main to test the compareTo method.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        testVehiclesEqual();
+        testVehiclesSameMakeEarlierThis();
+        testVehiclesDiffMakesBiggerThis();
     }
 }
