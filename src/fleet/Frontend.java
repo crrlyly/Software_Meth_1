@@ -109,7 +109,7 @@ public class Frontend {
      * @param startingDate the start date
      * @param endingDate the end date
      * @return number of days between end and start; may be negative if endingDate less than or equal to startingDate;
-     *          returns 0 if either argument is null
+     * returns 0 if either argument is null
      */
     private int daysBetween(Date startingDate, Date endingDate){
         if (startingDate == null || endingDate == null) return 0;
