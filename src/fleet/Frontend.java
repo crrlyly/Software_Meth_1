@@ -13,6 +13,13 @@ public class Frontend {
     private final TripList tripList = new TripList();
 
     /**
+     * Constructs a new Frontend object to manage the vehicle system.
+     */
+    public Frontend() {
+
+    }
+
+    /**
      * Stops the program loop and prints a termination message.
      */
     private void terminate(){
