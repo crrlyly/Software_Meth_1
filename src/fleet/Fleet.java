@@ -1,14 +1,14 @@
 package fleet;
 /**
- * A dynamic array of Vehicle objects that supports
- * add, remove, lookup, and a utility print sorted by make (then obtained date).
- * Capacity grows in fixed increments as elements are added.
+ * This class creates a dynamic array of Vehicle objects that allows to add, remove,
+ * find, and a print sorted by make (then obtained date).
  *
  * @author Carly Chick
  */
 public class Fleet {
     private static final int CAPACITY = 4;
     private static final int NOT_FOUND = -1;
+
     private Vehicle[] fleet;
     private int size;
 
@@ -21,7 +21,7 @@ public class Fleet {
     }
 
     /**
-     * Finds the position of a vehicle in the fleet array.
+     * Finds the index of a vehicle in the fleet array.
      *
      * @param vehicle the vehicle to look for
      * @return the index of the vehicle if found; -1 if not found
@@ -51,7 +51,7 @@ public class Fleet {
 
     /**
      * Adds a vehicle to the fleet if it is not null and not already present.
-     * Expands the array if there is no room left.
+     * Grows the array if there is no room.
      *
      * @param vehicle the vehicle to add
      */
@@ -86,7 +86,7 @@ public class Fleet {
     /**
      * Checks whether a given vehicle is already in the fleet.
      *
-     * @param vehicle the vehicle to check
+     * @param vehicle vehicle to check
      * @return true if the vehicle is found; false otherwise
      */
     public boolean contains(Vehicle vehicle) {
@@ -100,7 +100,7 @@ public class Fleet {
 
     /**
      * Prints all vehicles in the fleet in order by make and obtained date.
-     * Sorting is done using a simple selection sort algorithm.
+     * Sorting is done using selection sort.
      */
     public void printByMake() {
         for (int i = 0; i < size - 1; i++) {
@@ -137,6 +137,11 @@ public class Fleet {
         return fleet[index];
     }
 
+    /**
+     * Method to return the size of the fleet (the amount of actual vehicles in the fleet)
+     *
+     * @return the size of the fleet
+     */
     public int getSize() {
         return size;
     }

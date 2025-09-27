@@ -1,8 +1,7 @@
 package fleet;
 /**
- * The Department enum represents the different departments
- * that employees can belong to. Each constant is a
- * field of study.
+ * This enum class represents the different departments
+ * that employees can belong to.
  *
  * @author Carly Chick
  */
@@ -14,24 +13,7 @@ public enum Department {
     BusinessAnalyticsAndInformationTechnology;
 
     /**
-     * Turns a string into the matching department constant.
-     * It is case-insensitive, so for example
-     * "math" and "Math" will both return the Math constant.
-     *
-     * @param departmentStr the string to match against department names
-     * @return the matching department constant; null if no match is found
-     */
-    public static Department parseEmployee(String departmentStr) {
-        Department[] allDepartments = Department.values(); // get all enum constants
-        for (int i = 0; i < allDepartments.length; i++) {
-            if (allDepartments[i].name().equalsIgnoreCase(departmentStr)) {
-                return allDepartments[i];
-            }
-        }
-        return null; // not found
-    }
-
-    /**
+     * This method converts a department constant into it's respective grammatically correct String.
      *
      * @return a grammatically correct string that corresponds with a Department enum
      */
@@ -51,5 +33,4 @@ public enum Department {
                 return "Failed to find department.";
         }
     }
-
 }

@@ -43,8 +43,12 @@ public class Vehicle implements Comparable<Vehicle> {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()){
+            return false;
+        }
         Vehicle other = (Vehicle) obj;
         return this.plate != null && this.plate.equals(other.plate);
     }
@@ -75,17 +79,14 @@ public class Vehicle implements Comparable<Vehicle> {
         if (other == null) {
             throw new NullPointerException("Cannot compare to null Vehicle");
         }
-
         int byMake = Make.compareStringsIgnoreCase(this.getMake().name(), other.getMake().name());
         if (byMake != 0) {
             return byMake < 0 ? -1 : 1;
         }
-
         int byDate = this.getObtained().compareTo(other.getObtained());
         if (byDate != 0) {
             return byDate < 0 ? -1 : 1;
         }
-
         return 0;
     }
 
@@ -168,7 +169,7 @@ public class Vehicle implements Comparable<Vehicle> {
 
         int expectedOutput = -1;
         int actualOutput = one.compareTo(two);
-        System.out.println("**Test case 3: Testing two vehicles with the same make but this vehicle has an earlier date " +
+        System.out.println("**Test case 2: Testing two vehicles with the same make but this vehicle has an earlier date " +
                 "than the vehicle that was passed in.");
         testResult(one, two, expectedOutput, actualOutput);
     }
@@ -183,8 +184,8 @@ public class Vehicle implements Comparable<Vehicle> {
 
         int expectedOutput = 1;
         int actualOutput = one.compareTo(two);
-        System.out.println("**Test case 4: Testing two vehicles where this vehicle has a " +
-                "larger make which makes it go after the passed in vehicle.");
+        System.out.println("**Test case 3: Testing two vehicles where this vehicle has a " +
+                "make that comes before the second vehicle's make alphabetically.");
         testResult(one, two, expectedOutput, actualOutput);
     }
 

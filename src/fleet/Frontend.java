@@ -2,7 +2,7 @@ package fleet;
 import java.util.Scanner;
 import java.util.Calendar;
 /**
- * Console based frontend for our Vehicle Management System.
+ * Console based frontend for the Vehicle Management System.
  *
  * @author Carly Chick
  */
@@ -13,7 +13,7 @@ public class Frontend {
     private final TripList tripList = new TripList();
 
     /**
-     * Terminates the program loop and prints a termination message.
+     * Stops the program loop and prints a termination message.
      */
     private void terminate(){
         System.out.println("Vehicle Management System is terminated.");
@@ -24,7 +24,7 @@ public class Frontend {
      * Routes a command to the appropriate handler.
      *
      * @param cmd the command token
-     * @param parts the full tokenized input line from the console
+     * @param parts the tokenized input line from the console
      */
     private void processCommand(String cmd, String[] parts) {
         switch(cmd){
@@ -131,23 +131,27 @@ public class Frontend {
     }
 
     /**
+     * Returns whether two closed date ranges overlap.
+     * The ranges are inclusive.
      *
-     * @param aStart
-     * @param aEnd
-     * @param bStart
-     * @param bEnd
-     * @return
+     * @param aStart start of the first range
+     * @param aEnd end of the first range
+     * @param bStart start of the second range
+     * @param bEnd end of the second range
+     * @return true if the two ranges overlap at any point; false otherwise
      */
     private boolean rangesOverlapInclusive(Date aStart, Date aEnd, Date bStart, Date bEnd) {
         return aStart.compareTo(bEnd) <= 0 && aEnd.compareTo(bStart) >= 0;
     }
 
     /**
+     * Checks if a vehicle is available for a date range by checking all bookings
+     * for that vehicle and seeing if any overlap with the range.
      *
-     * @param vehicle
-     * @param reqStart
-     * @param reqEnd
-     * @return
+     * @param vehicle the vehicle to check
+     * @param reqStart requested start date
+     * @param reqEnd requested end date
+     * @return true if no existing booking for the vehicle overlaps the range; false otherwise
      */
     private boolean isVehicleAvailable(Vehicle vehicle, Date reqStart, Date reqEnd) {
         Booking[] all = reservation.getBookings();
@@ -164,14 +168,15 @@ public class Frontend {
     }
 
     /**
+     * Checks if the employee has any of their own bookings that overlap
+     * a date range. Used to prevent self conflicts.
      *
-     * @param vehicle
-     * @param reqStart
-     * @param reqEnd
-     * @param employee
-     * @return
+     * @param reqStart requested start date
+     * @param reqEnd requested end date
+     * @param employee the employee name to match against bookings
+     * @return true if the employee has no overlapping bookings; false otherwise
      */
-    private boolean isVehicleAvailableSelf(Vehicle vehicle, Date reqStart, Date reqEnd, String employee) {
+    private boolean isVehicleAvailableSelf(Date reqStart, Date reqEnd, String employee) {
         Booking[] all = reservation.getBookings();
         if (all == null) return true;
         for (int i = 0; i < all.length; i++) {
@@ -186,8 +191,9 @@ public class Frontend {
     }
 
     /**
+     * Computes the date exactly three calendar months from "today".
      *
-     * @return
+     * @return a Date showing the day three months after the current day
      */
     private Date getThreeMonthsFromToday(){
         Calendar calendar = Calendar.getInstance(); // today
@@ -199,10 +205,12 @@ public class Frontend {
     }
 
     /**
+     * Moves a completed reservation into the trip list.
+     * Removes the booking from reservations, then updates vehicle mileage.
      *
-     * @param originalBooking
-     * @param originalMileage
-     * @param currentMileage
+     * @param originalBooking the completed booking
+     * @param originalMileage the mileage at trip start
+     * @param currentMileage the mileage at trip end
      */
     private void moveFromReservationToTripList(Booking originalBooking, int originalMileage, int currentMileage){
         reservation.remove(originalBooking);
@@ -213,9 +221,12 @@ public class Frontend {
     }
 
     /**
+     * Finds the index (in reservation) of the booking for the same vehicle
+     * whose end date is earliest.
      *
-     * @param booking
-     * @return
+     * @param booking a reference booking used for matching
+     * @return the index of the earliest ending booking for that vehicle;
+     * -1 if none is found
      */
     private int findIndexOfEarliestEndDate(Booking booking){
         Date earliest = booking.getEnd();
@@ -232,13 +243,15 @@ public class Frontend {
     }
 
     /**
+     * Checks requested booking dates against rules:
+     * Prints a specific error message and returns false on the first violation.
      *
-     * @param parts
-     * @param startingDate
-     * @param endingDate
-     * @param today
-     * @param threeMonthsFromToday
-     * @return
+     * @param parts tokenized input
+     * @param startingDate requested start date
+     * @param endingDate requested end date
+     * @param today today's date
+     * @param threeMonthsFromToday the date three months from today
+     * @return true if all checks pass; false otherwise (and will print error message)
      */
     private boolean bookVehicleDateChecks(String[] parts, Date startingDate, Date endingDate, Date today, Date threeMonthsFromToday){
         if(!startingDate.isValid()){
@@ -359,7 +372,7 @@ public class Frontend {
             System.out.println(parts[4] + " - not an eligible employee to book.");
             return;
         }
-        if (!isVehicleAvailableSelf(vehicle, startingDate, endingDate, parts[4])) {
+        if (!isVehicleAvailableSelf(startingDate, endingDate, parts[4])) {
             System.out.println(parts[4].toUpperCase() + " - has an existing booking conflicting with the beginning date " + parts[1]);
             return;
         }

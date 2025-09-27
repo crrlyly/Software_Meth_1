@@ -33,14 +33,13 @@ public enum Make {
      * @param first the first string to compare
      * @param second the second string to compare
      * @return a negative integer if a comes before b;
-     *          a positive integer if a comes after b;
-     *          or zero if the strings are equal ignoring case
+     * a positive integer if a comes after b;
+     * or zero if the strings are equal ignoring case
      */
     public static int compareStringsIgnoreCase(String first, String second) {
         int len1 = first.length();
         int len2 = second.length();
         int lim = Math.min(len1, len2);
-
         for (int i = 0; i < lim; i++) {
             char c1 = Character.toLowerCase(first.charAt(i));
             char c2 = Character.toLowerCase(second.charAt(i));

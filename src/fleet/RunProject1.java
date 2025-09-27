@@ -8,7 +8,7 @@ public class RunProject1 {
     /**
      * Launches the application.
      *
-     * @param args
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         new Frontend().run();

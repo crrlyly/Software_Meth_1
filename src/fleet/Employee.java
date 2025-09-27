@@ -1,7 +1,7 @@
 package fleet;
 /**
- * The Employee enum represents employees by their last names.
- * Each employee is also associated with a Department.
+ * This enum class represents employees by their last names.
+ * Each employee also has a Department.
  *
  * @author Carly Chick
  */
@@ -20,19 +20,24 @@ public enum Employee {
     /**
      * Creates an employee constant with the given department.
      *
-     * @param dept
+     * @param dept the department for the employee
      */
     Employee(Department dept) {
         this.dept = dept;
     }
 
+    /**
+     * Method that gets the department for the respective employee.
+     *
+     * @return the department
+     */
     public Department getDept() {
         return dept;
     }
 
     /**
-     * Converts a string into the matching employee constant.
-     * The match is case-insensitive, so "patel" and "Patel" both work.
+     * Turns a string into the matching employee constant.
+     * The match is case-insensitive.
      *
      * @param employeeStr the string to match against employee names
      * @return the matching employee constant; null if no match is found
