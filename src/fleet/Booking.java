@@ -12,6 +12,7 @@ public class Booking {
 
     /**
      * constructor of a booking with just a vehicle
+     *
      * @param vehicle
      */
     public Booking(Vehicle vehicle) {
@@ -20,6 +21,7 @@ public class Booking {
 
     /**
      * constructor of a booking with the same beginning and ending date, and a vehicle
+     *
      * @param end
      * @param vehicle
      */
@@ -31,6 +33,7 @@ public class Booking {
 
     /**
      * constructor of a booking with a beginning date, end date, and vehicle
+     *
      * @param begin
      * @param end
      * @param vehicle
@@ -43,6 +46,7 @@ public class Booking {
 
     /**
      * constructor of a booking with a beginning date, end date, vehicle, and employee
+     *
      * @param begin
      * @param end
      * @param employee
@@ -57,14 +61,16 @@ public class Booking {
 
     /**
      * returns the beginning date of the booking
+     *
      * @return begin the beginning date of the booking
      */
     public Date getBegin() {
         return begin;
     }
 
-    /** returns
-     * the ending date of the booking
+    /**
+     * returns the ending date of the booking
+     *
      * @return end the ending date of the booking
      */
     public Date getEnd() {
@@ -73,6 +79,7 @@ public class Booking {
 
     /**
      * returns the employee associated with the booking
+     *
      * @return employee the employee in the booking
      */
     public Employee getEmployee() {
@@ -81,6 +88,7 @@ public class Booking {
 
     /**
      * returns the vehicle associated with the booking
+     *
      * @return vehicle the vehicle in the booking
      */
     public Vehicle getVehicle() {
@@ -89,19 +97,25 @@ public class Booking {
 
     /**
      * tests if two bookings with beginning dates, ending dates, and a vehicle are equal to each other
+     *
      * @param obj   the reference object with which to compare.
      * @return true if the bookings are the same as each other, false if not
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()){
+            return false;
+        }
         Booking other = (Booking) obj;
         return begin.equals(other.begin) && end.equals(other.end) && vehicle.equals(other.vehicle);
     }
 
     /**
      * the string representation of a booking
+     *
      * @return the string representation of a booking
      */
     @Override
@@ -112,6 +126,7 @@ public class Booking {
 
     /**
      * tests if two bookings with no beginning dates are equal
+     *
      * @param booking the booking being compared to
      * @return true if the bookings are equal, false if they are not
      */
@@ -121,6 +136,7 @@ public class Booking {
 
     /**
      * tests if two bookings with no beginning or end dates are equal
+     *
      * @param booking the booking being compared to
      * @return true if the bookings are equal, false if not
      */

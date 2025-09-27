@@ -1,15 +1,17 @@
 package fleet;
 /**
- This class creates a circularly linked list of trips.
- Additionally it inserts the trips in order of earliest end date, and can print the list/find the number of trips in the list.
- @author Alec Cotler
+ * This class creates a circularly linked list of trips.
+ * Additionally, it inserts the trips in order of earliest end date, and can print the list/find the number of trips in the list.
+ *
+ * @author Alec Cotler
  */
 public class TripList {
     private Node last; //the reference to the last node of the linked list.
 
     /**
-     adds a trip to the trip linked list in order of ending date
-     @param trip , the trip object to be added to the list
+     * adds a trip to the trip linked list in order of ending date
+     *
+     * @param trip , the trip object to be added to the list
      */
     public void add(Trip trip) {
         Node newNode = new Node(trip);
@@ -67,6 +69,7 @@ public class TripList {
 
     /**
      * returns the amount of trips in the trip linked list
+     *
      * @return count, the number of trips in the triplist
      */
     public int getSize() {
@@ -87,6 +90,7 @@ public class TripList {
 
     /**
      * returns the last node in the linked list
+     *
      * @return last the last node in the linked list
      */
     public Node getLast() {

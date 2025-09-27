@@ -7,8 +7,6 @@ import java.util.StringTokenizer;
  * @author Alec Cotler
  */
 public class Date implements Comparable<Date> {
-
-
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUARTERCENTENNIAL = 400;
@@ -36,6 +34,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Constructor: parses a date string in "mm/dd/yyyy" format
+     *
      * @param dateStr the date string being processed
      */
     public Date(String dateStr) {
@@ -47,6 +46,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks if the date is a valid calendar date, including leap year logic
+     *
      * @return true if it is a valid calendar date, false if it is not
      */
     public boolean isValid() {
@@ -89,6 +89,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks if a year is a leap year
+     *
      * @return true if the year is a leap year, false if it is not a leap year
      */
     public boolean isLeap() {
@@ -112,7 +113,8 @@ public class Date implements Comparable<Date> {
 
     /**
      * checks if two dates are equal
-     * @param obj   the reference object with which to compare.
+     *
+     * @param obj the reference object with which to compare.
      * @return true if the objects are equal, false if they are not
      */
     @Override
@@ -125,6 +127,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * returns the date in mm/dd/yyyy format
+     *
      * @return the string representation of the date (mm/dd/yyyy)
      */
     @Override
@@ -133,7 +136,9 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * returns -1 if this date comes before the other date, 0 if they are the same date, or 1 if this date come after the other date
+     * returns -1 if this date comes before the other date, 0 if they are the same date,
+     * or 1 if this date come after the other date
+     *
      * @param other , the date being compared to
      * @return -1 if the date you are comparing comes before other, 0 if they are the same date, and 1 if the date you are comparing comes after other
      */
@@ -153,6 +158,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * returns this date's year
+     *
      * @return year this date's year
      */
     public int getYear() {
@@ -161,6 +167,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * returns this date's month
+     *
      * @return month this date's month
      */
     public int getMonth() {
@@ -169,23 +176,11 @@ public class Date implements Comparable<Date> {
 
     /**
      * returns this date's day
+     *
      * @return day this month's day
      */
     public int getDay() {
         return day;
-    }
-
-    /**
-     * main driver for testing isValid()
-     * @param args the test method arguments
-     */
-    public static void main(String[] args) {
-        testYearSmall();
-        testMonthNotInRange();
-        testDayNotInRange();
-        testNotALeapYear();
-        testValidDate();
-        testValidLeapYear();
     }
 
     /**
@@ -262,6 +257,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * method that gives the results to test the testing methods
+     *
      * @param date the date being tested for validity
      * @param expectedOutput whether the date should be valid or invalid
      * @param actualOutput whether the date actually is considered valid or invalid
@@ -271,6 +267,20 @@ public class Date implements Comparable<Date> {
         System.out.println("Expected output: " + expectedOutput);
         System.out.println("Actual output: " + actualOutput);
         System.out.println(expectedOutput != actualOutput ? " (FAIL)\n" : " (PASS)\n");
+    }
+
+    /**
+     * main driver for testing isValid()
+     *
+     * @param args the test method arguments
+     */
+    public static void main(String[] args) {
+        testYearSmall();
+        testMonthNotInRange();
+        testDayNotInRange();
+        testNotALeapYear();
+        testValidDate();
+        testValidLeapYear();
     }
 }
 

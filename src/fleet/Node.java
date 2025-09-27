@@ -10,6 +10,7 @@ public class Node {
     public Node next;
 
     /**
+     * Creates a Node for a Trip
      *
      * @param trip the trip to be added to the linked list
      */

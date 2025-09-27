@@ -6,7 +6,7 @@ package fleet;
  *
  * @author Alec Cotler
  */
-    public class Reservation {
+public class Reservation {
 
     public static final int initialArrayLength = 4;
     public static int NOT_FOUND = -1;
@@ -14,7 +14,6 @@ package fleet;
 
     private Booking[] bookings;
     private int size;
-
 
     /**
      * constructor for a new reservation
@@ -26,6 +25,7 @@ package fleet;
 
     /**
      * returns the number of bookings in the reservation list.
+     *
      * @return size the number of bookings in the reservation list
      */
     public int getSize() {
@@ -34,6 +34,7 @@ package fleet;
 
     /**
      * returns the reservation list of bookings
+     *
      * @return bookings
      */
     public Booking[] getBookings() {
@@ -42,7 +43,8 @@ package fleet;
 
     /**
      * search for the given booking and return index, -1 if the booking is not in the reservation.
-     * @param booking , Booking to find in the reservation
+     *
+     * @param booking Booking to find in the reservation
      * @return the index of the booking
      */
     private int find(Booking booking) {
@@ -70,6 +72,7 @@ package fleet;
 
     /**
      * add booking to end of array
+     *
      * @param booking to add to the end of the array
      */
     public void add(Booking booking) {
@@ -88,6 +91,7 @@ package fleet;
 
     /**
      * removes a booking from the reservation list by deleting it, and then swapping the last booking in the list into its spot
+     *
      * @param booking to remove from the reservation list
      */
     public void remove(Booking booking) {
@@ -103,6 +107,7 @@ package fleet;
 
     /**
      * checks if the reservation list contains a specific booking
+     *
      * @param booking to check if the reservation list contains it
      * @return true if the reservation list contains the booking, false if not
      */
@@ -188,6 +193,7 @@ package fleet;
 
     /**
      * Sees if the booking is in the reservation list, and returns the booking if it is or null if not
+     *
      * @param booking to check if it is in the reservation list
      * @return booking if it is in the reservation list
      */
@@ -204,6 +210,7 @@ package fleet;
 
     /**
      * finds if a vehicle and ending date combo is in any of the bookings in the reservation list
+     *
      * @param booking to see if its vehicle and end date combo exists in the reservation list
      * @return true if the vehicle and end date combo exists in the reservation list, false if not
      */
@@ -221,6 +228,7 @@ package fleet;
 
     /**
      * finds if a vehicle is in any of the bookings in the reservation list
+     *
      * @param booking the booking to see if its vehicle exists in the reservation list
      * @return true if a vehicle is in the reservation list, false if not
      */
