@@ -184,7 +184,7 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Testing method that tests if a date with a year<1000 is considered valid.
+     * Testing method that tests if a date with a year less than 1000 is considered valid.
      */
     private static void testYearSmall() {
         Date date = new Date("01/23/999");
