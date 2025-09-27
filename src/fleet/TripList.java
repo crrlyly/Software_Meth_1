@@ -9,6 +9,13 @@ public class TripList {
     private Node last; //the reference to the last node of the linked list.
 
     /**
+     * Constructor for TripList
+     */
+    public TripList() {
+
+    }
+
+    /**
      * Adds a trip to the trip linked list in order of ending date.
      *
      * @param trip , the trip object to be added to the list

@@ -13,6 +13,12 @@ public enum Department {
     BusinessAnalyticsAndInformationTechnology;
 
     /**
+     * Constructor for Department
+     */
+    private Department() {
+    }
+
+    /**
      * This method converts a department constant into it's respective grammatically correct String.
      *
      * @return a grammatically correct string that corresponds with a Department enum

@@ -12,6 +12,12 @@ public enum Make {
     HONDA;
 
     /**
+     * Constructor for Make
+     */
+    private Make() {
+    }
+
+    /**
      * Parses a string into its corresponding Make value (case-insensitive).
      *
      * @param makeStr the make string to parse
