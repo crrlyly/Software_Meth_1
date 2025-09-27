@@ -1,6 +1,6 @@
 package fleet;
 /**
- * implements the nodes of a linked list
+ * Implements the nodes of a linked list.
  *
  * @author Alec Cotler
  */
@@ -10,7 +10,7 @@ public class Node {
     public Node next;
 
     /**
-     * Creates a Node for a Trip
+     * Creates a Node for a Trip.
      *
      * @param trip the trip to be added to the linked list
      */

@@ -16,7 +16,7 @@ public class Reservation {
     private int size;
 
     /**
-     * constructor for a new reservation
+     * Constructor for a new reservation.
      */
     public Reservation() {
         this.size = 0;
@@ -24,7 +24,7 @@ public class Reservation {
     }
 
     /**
-     * returns the number of bookings in the reservation list.
+     * Returns the number of bookings in the reservation list..
      *
      * @return size the number of bookings in the reservation list
      */
@@ -33,7 +33,7 @@ public class Reservation {
     }
 
     /**
-     * returns the reservation list of bookings
+     * Returns the reservation list of bookings.
      *
      * @return bookings
      */
@@ -42,7 +42,7 @@ public class Reservation {
     }
 
     /**
-     * search for the given booking and return index, -1 if the booking is not in the reservation.
+     * Search for the given booking and return index, -1 if the booking is not in the reservation.
      *
      * @param booking Booking to find in the reservation
      * @return the index of the booking
@@ -60,7 +60,7 @@ public class Reservation {
     }
 
     /**
-     * resize the array (add 4 spots)
+     * Resize the array (add 4 spots).
      */
     private void grow() {
         Booking[] newBookings = new Booking[this.bookings.length + growSize];
@@ -71,7 +71,7 @@ public class Reservation {
     }
 
     /**
-     * add booking to end of array
+     * Add booking to end of array.
      *
      * @param booking to add to the end of the array
      */
@@ -90,7 +90,7 @@ public class Reservation {
     }
 
     /**
-     * removes a booking from the reservation list by deleting it, and then swapping the last booking in the list into its spot
+     * Removes a booking from the reservation list by deleting it, and then swapping the last booking in the list into its spot.
      *
      * @param booking to remove from the reservation list
      */
@@ -106,7 +106,7 @@ public class Reservation {
     } //overwrite with last element
 
     /**
-     * checks if the reservation list contains a specific booking
+     * Checks if the reservation list contains a specific booking.
      *
      * @param booking to check if the reservation list contains it
      * @return true if the reservation list contains the booking, false if not
@@ -120,7 +120,7 @@ public class Reservation {
     }
 
     /**
-     * prints the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
+     * Prints the reservation list in the order of the plates of the vehicle, then beginning date of the reservation.
      */
     public void printByVehicle() {
         sortByPlateThenDate();
@@ -131,7 +131,7 @@ public class Reservation {
     }
 
     /**
-     * prints the reservation list ordered by department then by employee (alphabetically)
+     * Prints the reservation list ordered by department then by employee (alphabetically).
      */
     public void printByDept() {
         sortByDeptThenEmployee();
@@ -147,7 +147,7 @@ public class Reservation {
     }
 
     /**
-     * sorts the reservation list in the order of the plates of the vehicle, then beginning date of the reservation
+     * Sorts the reservation list in the order of the plates of the vehicle, then beginning date of the reservation.
      */
     public void sortByPlateThenDate() {
         for (int i = 1; i < size; i++) {
@@ -170,7 +170,7 @@ public class Reservation {
     }
 
     /**
-     * sorts the reservation list ordered by department then by employee (alphabetically)
+     * Sorts the reservation list ordered by department then by employee (alphabetically).
      */
     public void sortByDeptThenEmployee() {
         for (int i = 1; i < size; i++) {
@@ -192,7 +192,7 @@ public class Reservation {
     }
 
     /**
-     * Sees if the booking is in the reservation list, and returns the booking if it is or null if not
+     * Sees if the booking is in the reservation list, and returns the booking if it is or null if not.
      *
      * @param booking to check if it is in the reservation list
      * @return booking if it is in the reservation list
@@ -209,7 +209,7 @@ public class Reservation {
     }
 
     /**
-     * finds if a vehicle and ending date combo is in any of the bookings in the reservation list
+     * Finds if a vehicle and ending date combo is in any of the bookings in the reservation list.
      *
      * @param booking to see if its vehicle and end date combo exists in the reservation list
      * @return true if the vehicle and end date combo exists in the reservation list, false if not
@@ -227,7 +227,7 @@ public class Reservation {
     }
 
     /**
-     * finds if a vehicle is in any of the bookings in the reservation list
+     * Finds if a vehicle is in any of the bookings in the reservation list.
      *
      * @param booking the booking to see if its vehicle exists in the reservation list
      * @return true if a vehicle is in the reservation list, false if not

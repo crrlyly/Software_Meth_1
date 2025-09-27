@@ -9,7 +9,7 @@ public class TripList {
     private Node last; //the reference to the last node of the linked list.
 
     /**
-     * adds a trip to the trip linked list in order of ending date
+     * Adds a trip to the trip linked list in order of ending date.
      *
      * @param trip , the trip object to be added to the list
      */
@@ -51,7 +51,7 @@ public class TripList {
     }
 
     /**
-     * prints all the trips in the trip linked list
+     * Prints all the trips in the trip linked list.
      */
     public void print() {
         if (last == null) {
@@ -68,7 +68,7 @@ public class TripList {
     }
 
     /**
-     * returns the amount of trips in the trip linked list
+     * Returns the amount of trips in the trip linked list.
      *
      * @return count, the number of trips in the triplist
      */
@@ -89,7 +89,7 @@ public class TripList {
     }
 
     /**
-     * returns the last node in the linked list
+     * Returns the last node in the linked list.
      *
      * @return last the last node in the linked list
      */
